@@ -1,0 +1,74 @@
+// Place all the styles related to the principal controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+    background-image: image-url("fondo3.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /*background-size: cover;*/
+}
+
+/* Color texto navbar */
+
+.navbarColor {
+    color: white !important;
+}
+
+/* Alienar texto */
+
+.u-textCenter {
+    text-align: center!important;
+}
+
+/* Para modal login */
+
+input[type="text"]:not([size]) { 
+width: 100%; 
+}
+
+input[type="password"]:not([size]) { 
+width: 100%; 
+}
+
+.login-element {
+    margin: 10px;
+}
+
+/* Jumbotron */
+
+.tam-jumbo {
+    margin-top: 50px;
+    margin-right: 100px;
+    margin-left: 100px;
+    border-radius: 6px;
+}
+
+.color-jumbo {
+    background: rgba(255, 255, 255, 0.80);
+}
+
+/* Panel registro */
+
+.color-registro {
+    background-color: #9AE6FC;
+}
+
+.tam-registro {
+    margin-right: 300px;
+    margin-left: 300px;
+}
+
+/* Esto va al final de la CSS */
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../assets/glyphicons-halflings-regular.eot');
+  src: url('../assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+       url('../assets/glyphicons-halflings-regular.woff') format('woff'),
+       url('../assets/glyphicons-halflings-regular.ttf') format('truetype'),
+       url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
