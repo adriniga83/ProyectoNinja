@@ -11,6 +11,16 @@ module ProyectoNinja
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+        
+    Tmdb::Api.key("d4345c394b5a85b5749cfb819a8b2e01")
+    Tmdb::Api.language("es")
+    configuration = Tmdb::Configuration.new
+    configuration.base_url
+    configuration.secure_base_url
+    configuration.poster_sizes
+    configuration.backdrop_sizes
+    configuration.profile_sizes
+    configuration.logo_sizes
   end
   
 #config.i18n.default_locale = :es

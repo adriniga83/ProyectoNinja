@@ -5,6 +5,6 @@
 class WelcomeMailer < ApplicationMailer
   def welcome_send(user)
     @user = user
-    mail to: user.email, subject: "Bienvenido a mi sitio", from: "correopruebasbasura@gmail.com"
+    mail to: user.email, subject: "Bienvenido a Declivia", from: "tudeclivia@gmail.com"
   end
 end

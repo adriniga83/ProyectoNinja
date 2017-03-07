@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_estanteria: MyString
+  id_pelicula: MyString
+  id_serie: MyString
+  id_videojuego: MyString
+  id_musica: MyString
+
+two:
+  id_estanteria: MyString
+  id_pelicula: MyString
+  id_serie: MyString
+  id_videojuego: MyString
+  id_musica: MyString

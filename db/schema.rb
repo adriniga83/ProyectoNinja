@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170211085144) do
+ActiveRecord::Schema.define(version: 20170219155612) do
+
+  create_table "estanteria", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "id_estanteria"
+    t.string   "id_pelicula"
+    t.string   "id_serie"
+    t.string   "id_videojuego"
+    t.string   "id_musica"
+    t.string   "user"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "peliculas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "titulo"
+    t.string   "genero"
+    t.string   "sipnosis"
+    t.date     "estreno"
+    t.integer  "puntuacion"
+    t.integer  "duracion"
+    t.string   "actores"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "user",                   default: "", null: false
@@ -24,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170211085144) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "id_estanteria"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree

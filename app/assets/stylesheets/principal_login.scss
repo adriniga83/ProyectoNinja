@@ -67,6 +67,9 @@ width: 100%;
 .tam-search {
     height: 150px;
     background-color: #fff;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
 }
 
 .dropdown.dropdown-lg .dropdown-menu {

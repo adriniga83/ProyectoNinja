@@ -21,14 +21,15 @@
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <%= stylesheet_link_tag 'principal_login', media: "all" %>
         <%= stylesheet_link_tag 'sidebar_login', media: "all" %>
+        <%= stylesheet_link_tag 'search', media: "all" %>
         <%= javascript_include_tag 'application' => true %>
         <%= javascript_include_tag 'principal' => true %>
         <%= csrf_meta_tags %>
 
-        <script>
+        <!--<script>
           $('.dropdown-toggle').dropdown();
-        </script>
-        
+        </script>-->
+
         <!--<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>-->
                     
     </head>
@@ -87,7 +88,7 @@
                      <div class="dropdown dropdown-lg">
                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
                          <div class="dropdown-menu dropdown-menu-right" role="menu">
-                           <div class="form-horizontal" role="form">
+                          <div class="form-horizontal" role="form">
                             <div class="form-group">
                               <label for="filter">Buscar por</label>
                               <fieldset>
@@ -101,9 +102,9 @@
                             </div>
                           </div>
                          </div>
-                     </div> 
+                     </div>
                      <span class="input-group-btn">
-                      <%= button_tag(:class => "btn btn-primary") do%>
+                      <%= button_tag( :class => "btn btn-primary") do%>
                          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                       <%end%>
                          <!--<button type="button" class="btn btn-primary">--><span class="glyphicon glyphicon-search" aria-hidden="true"></span><!--</button>-->
@@ -167,6 +168,51 @@
         </div>
         <div class="container-fluid">
             <div class="jumbotron text-center tam-jumbo color-jumbo">
+                <% @count=0 %>
+                <% @aux.each do |f| %>
+                  <% @count+=1 %>
+                  <%  if f.user_id == current_user.id %>
+                    <% @pelicula = Pelicula.where(:id_pelicula => f.id_pelicula) %>
+                      <% if @pelicula %>
+                      <% @pelicula.each do |pelicula| %>
+                        <% if pelicula.id_user == current_user.id %>
+                        <div class="item card">
+                          <div class="image_content">
+                              <a href="https://www.themoviedb.org/movie/<%=pelicula.id_pelicula%>"><img src="<%=pelicula.imagen_file_name%>"/></a>
+                          </div>
+                          <div class="item_info">
+                            <p class="infor">
+                              <%= hidden_field_tag "id_pelicula"+@count.to_s, pelicula.id_pelicula %>
+                              <a class="title" href="https://www.themoviedb.org/movie/<%= pelicula.id_pelicula %>"><%= pelicula.titulo %></a>
+                              <span class="vote_average">
+                                  <%= pelicula.puntuacion.to_f %>
+                                  <span class="glyphicon glyphicon-star x1 rating"></span>
+                              </span>
+                            </p>
+                            <p class="meta">
+                              <span class="genres">
+                                  <%= pelicula.genero %>
+                              </span>
+                              <span class="release_date">
+                                  <%= pelicula.estreno %>
+                                  <span class="glyphicon glyphicon-calendar x1"></span>
+                              </span>
+                            </p>
+                            <p class="overview" style="font-size: 1em;">
+                              <%= pelicula.sipnosis %>
+                            </p>
+                            <div style="clear: both"></div>
+                            <p class="view_more">
+                              <a href="https://www.themoviedb.org/movie/<%=pelicula.id_pelicula%>" style="font-size: 0.6em; float: left; color: #000;">Más información</a>
+                            </p>
+                            <%= link_to 'No lo tengo', estanterium_path(pelicula.id_pelicula), method: :delete, data: { confirm: '¿Estás seguro?' } %>
+                          </div>
+                        </div> 
+                      <% end %>
+                      <% end %>
+                      <% end %>
+                      <% end %>
+              <% end %>
             </div>
         </div>
       </div>
