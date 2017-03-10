@@ -22,8 +22,10 @@
         <%= stylesheet_link_tag 'principal_login', media: "all" %>
         <%= stylesheet_link_tag 'sidebar_login', media: "all" %>
         <%= stylesheet_link_tag 'search', media: "all" %>
+        <%= stylesheet_link_tag 'peliculas', media: "all" %>
         <%= javascript_include_tag 'application' => true %>
         <%= javascript_include_tag 'principal' => true %>
+        <%= javascript_include_tag 'search' => true %>
         <%= csrf_meta_tags %>
 
         <!--<script>
@@ -94,6 +96,8 @@
                           <fieldset>
                             <%= radio_button_tag "id", "Peliculas", true %>
                             <label for="id_Peliculas">Películas</label>
+                            <%= radio_button_tag "id", "Series"%>
+                            <label for="id_Discos">Series</label>
                             <%= radio_button_tag "id", "Discos"%>
                             <label for="id_Discos">Discos</label>
                             <%= radio_button_tag "id", "Juegos"%>
@@ -169,81 +173,29 @@
         <div class="container-fluid">
             <div class="jumbotron text-center tam-jumbo color-jumbo">
               <% if @cancion %>
-              <% @cancion.each do |cancion| %>
-                <%= cancion["title"] %>
-                <img src="<%= cancion["thumb"] %>"/>
-                <p></p>
-              <% end %>
+                <%= render 'discos' %>
               <% end %>
               <% if @search %> 
-              <% @count=0 %>
-              <%= form_for :estanteria, url:estanteria_path do |f| %>
-                <%= hidden_field_tag "busqueda", @busqueda %>
-                <% @search.each do |pelicula_id| %>
-                  <% @count+=1 %>
-                  <%  idMovie = Tmdb::Movie.detail(pelicula_id.id) %>
-                  <%= hidden_field_tag "id_pelicula"+@count.to_s, pelicula_id.id %>
-                  <%= hidden_field_tag "id_imdb"+@count.to_s, idMovie["imdb_id"] %>
-                <div class="item card">
-                  <div class="image_content">
-                     <%= hidden_field_tag 'poster'+@count.to_s, pelicula_id.poster_path %>
-                     <%= hidden_field_tag 'url', @base_url %>
-                     <%= hidden_field_tag 'tam', @sizes[1] %>
-                     <%= hidden_field_tag 'nombre_poster'+@count.to_s, pelicula_id.poster_path %>
-                     <a id="poster<%=@count%>"href="https://www.themoviedb.org/movie/<%=pelicula_id.id%>"><img src="<%=@base_url%><%=@sizes[1]%><%=pelicula_id.poster_path%>"/></a>
-                  </div>
-                  <div class="item_info">
-                    <p class="infor" style="font-weight: normal;">
-                      <%= hidden_field_tag 'titulo'+@count.to_s, idMovie["title"]%>  
-                      <a id="titulo<%=@count%>"class="title" href="https://www.themoviedb.org/movie/<%=pelicula_id.id%>"><%= idMovie["title"] %></a>
-                      <span id="puntuacion<%=@count%>" class="vote_average">
-                          <%= hidden_field_tag 'puntuacion'+@count.to_s, idMovie["vote_average"]%>  
-                          <%= idMovie["vote_average"] %>
-                          <span class="glyphicon glyphicon-star x1 rating"></span>
-                      </span>
-                    </p>
-                    <p class="meta">
-                      <span id="genero<%=@count%>" class="genres">
-                        <% @array = Array.new %>
-                        <% idMovie["genres"].each do |genero| %>
-                          <% @array << genero["name"]%>
-                          <%= genero["name"] %>
-                          <%= hidden_field_tag 'genero'+@count.to_s, @array%>  
-                        <% end %>
-                      </span>
-                      <span id="estreno<%=@count%>" class="release_date">
-                          <%= hidden_field_tag 'estreno'+@count.to_s, idMovie["release_date"]%>
-                          <%= idMovie["release_date"]%>
-                          <span class="glyphicon glyphicon-calendar x1"></span>
-                      </span>
-                    </p>
-                    <p id="sipnosis<%=@count%>" class="overview" style="font-size: 1em;">
-                      <%= hidden_field_tag 'sipnosis'+@count.to_s, idMovie["overview"]%>  
-                      <%= idMovie["overview"]%>
-                    </p>
-                    <div style="clear: both"></div>
-                    <p class="view_more">
-                      <a href="https://www.themoviedb.org/movie/<%=pelicula_id.id%>" style="font-size: 0.6em; float: left; color: #000;">Más información</a>            
-                      <% @aux = Pelicula.where(:id_user => current_user.id)%>
-                      <% @ids = Array.new %>
-                      <% @aux.each do |p| %>
-                        <% @ids << p.id_pelicula %>
-                      <% end %>    
-                      <% if @ids.include?(pelicula_id.id) == true %>
-                        <p>Lo tengo</p>
-                      <% else %>
-                        <%= button_tag "Lo tengo", class: "btn btn-primary", name: "lotengo", value: @count, id: "lotengo"%>
-                      <% end %>                      
-                    </p>
-                    <%= label_tag 'oculto', 'Lo tengo', style: "display: none;", id: "oculto"+@count.to_s %>
-                  </div>
-                </div>  
-                <% end %>
+                <%= render 'peliculas' %>
               <% end %>
+              <% if @juego %>
+              <% @juego.each do |juego| %>
+                <% imagen = juego.image %>
+                <img src="<%= imagen['thumb_url'] %>">
+                <%= juego.name %>
+                <%= juego.deck %><br>
+              <% end %>
+              <% end %>
+              <% if @serie %>
+                <%= render 'series' %>
               <% end %>
             </div>
         </div>
       </div>
+      
+      
+        
+      
     </body>
     <!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>');</script>-->
 

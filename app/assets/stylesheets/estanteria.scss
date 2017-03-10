@@ -1,3 +1,137 @@
 // Place all the styles related to the estanteria controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.total {
+    display: table;
+    width: 900px;
+    height: 500px;
+    background-color: #FFF;
+    float: none;
+    position: relative;
+    display: inline-block;
+    margin-top: 5em;
+}
+
+.movie_image {
+    display: table-row;
+    width: 310px;
+    margin-top: 10px;
+    margin-left: 10px;
+    display: inline-block;
+    height: 425px;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.55);
+    position: relative;
+    float: left;
+    border: 3px solid #242121;
+}
+
+.close-dialog {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    right: 0;
+    top: 0;
+    z-index: 1002;
+    color: white;
+}
+
+.close-dialog:hover {
+    color: grey;
+}
+
+.eliminar {
+    position:absolute; /*El div será ubicado con relación a la pantalla*/
+    right:10px; /*A la derecha deje un espacio de 0px*/
+    top:10px; /*Abajo deje un espacio de 0px*/
+    z-index:0;
+}
+
+.lo_tengo {
+    display: block;
+    padding: 0;
+    margin-bottom: 10px;
+    width: 125px;
+    color: #68aba7;
+    text-align: center;
+    border: solid 2px #72c1b9;
+    background-color: #fff;
+    -webkit-transition: background-color .2s ease-in-out;
+    -moz-transition: background-color .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out;
+    transition: background-color .2s ease-in-out;
+}
+
+.bt {
+    font-family: Arial;
+    font-size: 11px;
+    line-height: 30px;
+    padding: 0 23px;
+    height: 30px;
+    font-weight: bold;
+    color: #555;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid #e7e8e8;
+    background-color: #f3f3f3;
+    border-radius: 3px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.bt:hover {
+    background-color: #f3f3f3;
+    border-color: #d0d0d0;
+    color: #555;
+    text-decoration: none;
+}
+
+.rem {
+    background-color: #72c1b9;
+    color: #fff;  
+}
+
+.rem:hover {
+    background-color: #fff;
+    color: #72c1b9;
+}
+
+* > .fa.fa-hover-show,
+*:hover > .fa.fa-hover-hidden {
+  display: none;
+}
+*:hover > .fa.fa-hover-show {
+  display: inline-block;
+}
+
+			.on-sale {
+    position:absolute; /*El div será ubicado con relación a la pantalla*/
+    right:20px; /*A la derecha deje un espacio de 0px*/
+    top:40px; /*Abajo deje un espacio de 0px*/
+    z-index:0;
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.buy {
+    display: inline-block;
+    zoom: 1;
+    font-size: 13px;
+    padding: 0 19px 0 40px;
+    line-height: 28px;
+    font-weight: normal;
+    color: #666;
+    border: solid 1px #bbb;
+    cursor: pointer;
+    border-radius: 3px;
+    background: url(/img/shop-nh.png) no-repeat 14px center transparent;
+}
+
+.buy:hover {
+    border-color: #e56343;
+    color: #e56343;
+}

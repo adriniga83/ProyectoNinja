@@ -6,8 +6,8 @@ class SearchController < ApplicationController
   before_action :authenticate_user!
   
   def search
-    
-      @categoria = params[:id]
+ 
+    @categoria = params[:id]
     
     if @categoria == "Peliculas"   
       @respuesta = false;
@@ -47,7 +47,19 @@ class SearchController < ApplicationController
      response = http.request(request)
      bodyjson = JSON.parse(response.body)
      @cancion = bodyjson["results"]
+        
+    end
     
+    if @categoria == "Juegos"
+      
+      @juego = GiantBomb::Game.find(params[:titulo])
+      
+    end
+    
+    if @categoria == "Series"
+      
+      @serie = Tmdb::TV.find(params[:titulo]);
+      
     end
     
   end

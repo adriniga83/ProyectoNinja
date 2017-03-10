@@ -70,6 +70,8 @@ GEM
       oauth (~> 0.5.1)
     erubis (2.7.0)
     execjs (2.7.0)
+    giantbomb-api (1.6.1)
+      httparty
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hashie (3.5.5)
@@ -189,6 +191,7 @@ DEPENDENCIES
   devise
   devise-bootstrap-views
   discogs-wrapper
+  giantbomb-api
   jbuilder (~> 2.5)
   jquery-rails
   json
