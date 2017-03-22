@@ -13,7 +13,12 @@ Rails.application.routes.draw do
   get 'search' => "search#search"
   post 'search' => "search#search"
   
-  match '/estanteria', to: 'estanteria#actualizar', via: 'put'
+  put '/estanteria', to: 'estanteria#actualizar', as: 'actualizar'
+  patch '/estanteria', to: 'estanteria#borrar', as: 'borrar'
+  
+  #put 'estanteria' => "estanteria#actualizar"
+  
+  #match '/estanteria', to: 'estanteria#actualizar', via: 'put'
   
   #post '/principal' => "search#search"  
 end

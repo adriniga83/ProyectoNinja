@@ -57,6 +57,7 @@ class EstanteriaController < ApplicationController
     
     @estanteria = Estanterium.new
     @estanteria.id_pelicula = @pelicula.id_pelicula
+    @estanteria.medio = @pelicula.soporte
     @estanteria.user_id = current_user.id
     
     @estanteria.save
@@ -68,15 +69,35 @@ class EstanteriaController < ApplicationController
   
   def destroy
     #id_movie = "id_pelicula"+params[:nolotengo]
-    @delete = Pelicula.where(params[:id])
-    @eliminate = Estanterium.where(params[:id])
+    #@delete = Pelicula.where(params[:id])
+    #@eliminate = Estanterium.where(params[:id])
+    #@delete.each do |borrar|
+    #  if borrar.id_user == current_user.id && borrar.id_pelicula.to_s == params[:id]
+    #    borrar.destroy
+    #  end
+    #end
+    #@eliminate.each do |borrar1|
+    #  if borrar1.user_id == current_user.id && borrar1.id_pelicula == params[:id]
+    #    borrar1.destroy
+    #  end
+    #end
+    #redirect_to estanteria_path
+  end
+  
+  def borrar
+    
+    id_movie = "id_pelicula"+params[:lotengo]
+    soporte = "soporte"+params[:lotengo]
+    
+    @delete = Pelicula.where(["soporte = :soporte and id_pelicula = :id", { id: params[id_movie], soporte: params[soporte] }])
+    @eliminate = Estanterium.where(["medio = :medio and id_pelicula = :id", { id: params[id_movie], medio: params[soporte] }])
     @delete.each do |borrar|
-      if borrar.id_user == current_user.id && borrar.id_pelicula.to_s == params[:id]
+      if borrar.id_user == current_user.id && borrar.id_pelicula.to_s == params[id_movie]
         borrar.destroy
       end
     end
     @eliminate.each do |borrar1|
-      if borrar1.user_id == current_user.id && borrar1.id_pelicula == params[:id]
+      if borrar1.user_id == current_user.id && borrar1.id_pelicula == params[id_movie]
         borrar1.destroy
       end
     end

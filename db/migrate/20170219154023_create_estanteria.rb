@@ -8,6 +8,7 @@ class CreateEstanteria < ActiveRecord::Migration[5.0]
       t.string :id_musica
       t.string :user
       t.integer :user_id
+      t.string :medio
 
       t.timestamps
     end

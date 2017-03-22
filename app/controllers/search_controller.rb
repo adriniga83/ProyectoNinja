@@ -13,7 +13,7 @@ class SearchController < ApplicationController
       @respuesta = false;
       @busqueda = params[:titulo]
       if request.post?
-        @search = Tmdb::Movie.find(params[:titulo]);
+        @search = Tmdb::Movie.find(params[:titulo])
       end
       url = URI("https://api.themoviedb.org/3/configuration?api_key=d4345c394b5a85b5749cfb819a8b2e01")
 
@@ -29,7 +29,6 @@ class SearchController < ApplicationController
       bodyjson = JSON.parse(response.body)
       @base_url = bodyjson['images']['base_url']
       @sizes = bodyjson['images']['poster_sizes']
-      @prueba = "PASAAA"
     end
     
     if @categoria == "Discos"
