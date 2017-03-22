@@ -23,6 +23,7 @@
         <%= stylesheet_link_tag 'sidebar_login', media: "all" %>
         <%= stylesheet_link_tag 'search', media: "all" %>
         <%= stylesheet_link_tag 'peliculas', media: "all" %>
+        <%= stylesheet_link_tag 'modal_pelicula', media: "all" %>
         <%= javascript_include_tag 'application' => true %>
         <%= javascript_include_tag 'principal' => true %>
         <%= javascript_include_tag 'search' => true %>
@@ -191,10 +192,7 @@
               <% end %>
             </div>
         </div>
-      </div>
-      
-      
-        
+      </div>     
       
     </body>
     <!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>');</script>-->
@@ -211,6 +209,12 @@
       });
     </script>
     
-    
+    <script>
+      dataConfirmModal.setDefaults({
+        title: '¿Estás seguro?',
+        commit: 'Confirmar',
+        cancel: 'Cancelar'
+      });
+    </script>
     
 </html>

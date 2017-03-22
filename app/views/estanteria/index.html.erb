@@ -21,8 +21,8 @@
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <%= stylesheet_link_tag 'principal_login', media: "all" %>
         <%= stylesheet_link_tag 'sidebar_login', media: "all" %>
-        <%= stylesheet_link_tag 'search', media: "all" %>
         <%= stylesheet_link_tag 'peliculas', media: "all" %>
+        <%= stylesheet_link_tag 'modal_pelicula', media: "all" %>
         <%= stylesheet_link_tag 'estanteria', media: "all" %>
         <%= javascript_include_tag 'application' => true %>
         <%= javascript_include_tag 'principal' => true %>
@@ -172,7 +172,18 @@
         </div>
         <div class="container-fluid">
             <div class="jumbotron text-center tam-jumbo color-jumbo">
-              <%= render 'peliculas' %>             
+              <div class="acciones">      
+                <div style="text-align: left;">
+                    <%= link_to "Películas", {:controller => "estanteria", :action => "index", :peliculas => "peliculas", :select_filtrar => "Todo"} %>
+                    - Series - Discos - Juegos
+                </div>
+                <% if @multimedia == "peliculas" %>
+                  <%= render 'peliculas_Acciones' %>
+                <% end %>
+              </div>
+              <% if @multimedia %>
+                <%= render 'multimedia_peliculas' %>
+              <% end %>
             </div>
         </div>
       </div>
@@ -188,6 +199,14 @@
       $("#menu-toggle").click(function(e) {
         e.preventDefault();
       $("#wrapper").toggleClass("toggled");
+      });
+    </script>
+    
+    <script>
+      dataConfirmModal.setDefaults({
+        title: '¿Estás seguro?',
+        commit: 'Confirmar',
+        cancel: 'Cancelar'
       });
     </script>
     

@@ -10,6 +10,12 @@ class CreatePeliculas < ActiveRecord::Migration[5.0]
       t.string :actores
       t.integer :id_user
       t.integer :id_pelicula
+      t.integer :id_imdb
+      t.string :soporte
+      t.string :num_copias
+      t.string :ubicacion
+      t.boolean :prestado
+      t.string :pers_prestamo
 
       t.timestamps
     end

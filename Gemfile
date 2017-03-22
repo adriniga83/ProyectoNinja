@@ -15,6 +15,7 @@ gem 'json'
 gem 'paperclip'
 gem 'discogs-wrapper'
 gem 'giantbomb-api'
+gem 'data-confirm-modal'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'

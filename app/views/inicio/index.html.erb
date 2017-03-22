@@ -171,7 +171,7 @@
             <div class="modal-body">
               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                   <div class="input-group login-element">
-                    <%= f.text_field :user, :autofocus => true, :class => "form-control", :placeholder => 'Usuario', :required=> true%>
+                    <%= f.text_field :user, autofocus: true, :class => "form-control", :placeholder => 'Usuario', :required=> true%>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
                   </div>
                   <div class="input-group login-element">
