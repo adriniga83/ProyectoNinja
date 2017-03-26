@@ -6,9 +6,12 @@ class EstanteriaController < ApplicationController
     
     @generos = ["Acción", "Animación", "Aventura", "Ciencia ficción", "Comedia", "Crimen", "Drama", "Documental", "Familia", "Fantasía", "Guerra", "Historia", "Misterio", "Música", "Romance", "Suspense", "Terror"]
     @medios = ["Todo", "DVD", "Blu-ray", "HD-DVD"]
+    @letras = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     @filtrado = {"Medios" => @medios, "Géneros" => @generos}
     
     @multimedia = params[:peliculas]
+    
+    @abc = params[:abc]
     
     @ordenar = params[:select_ordenar]
     @filtrar = params[:select_filtrar]
