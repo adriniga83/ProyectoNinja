@@ -15,7 +15,7 @@ class CreatePeliculas < ActiveRecord::Migration[5.0]
       t.string :num_copias
       t.string :ubicacion
       t.boolean :prestado
-      t.string :pers_prestamo
+      t.string :pres_prestamo
 
       t.timestamps
     end
