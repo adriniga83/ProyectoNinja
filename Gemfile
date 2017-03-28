@@ -19,6 +19,7 @@ gem 'data-confirm-modal'
 gem 'will_paginate'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+gem 'bootstrap-select-wrapper-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'

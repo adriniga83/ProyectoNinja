@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.total {
+.totalS {
     display: table;
     width: 900px;
-    height: 500px;
+    height: 525px;
     background-color: #FFF;
     float: none;
     position: relative;
@@ -299,4 +299,72 @@
     position: absolute;
     left: 430px;
     bottom: 5px;
+}
+
+.status {
+    left: 10px;
+    bottom: 55px;
+    color: #000;
+    font-size: 0.5em;
+    position: absolute;
+}
+
+.estatus {
+    color: #666;
+    font-size: 1em;
+    left: 75px;
+    bottom: 55px;
+    position: absolute;
+}
+
+.temporadas {
+    left: 170px;
+    bottom: 55px;
+    color: #000;
+    font-size: 0.5em;
+    position: absolute;
+}
+
+.season {
+    color: #666;
+    font-size: 1em;
+    left: 265px;
+    bottom: 55px;
+    position: absolute;
+}
+
+.temp {
+    left: 425px;
+    bottom: 15px;
+    color: #000;
+    font-size: 0.7em;
+    position: absolute;
+}
+
+.text_temp {
+    font-size: 1em;
+    color: #666;
+    position: absolute;
+    left: 530px;
+    bottom: 10px;
+}
+
+.temp1 {
+    left: 290px;
+    bottom: 10px;
+    color: #000;
+    position: absolute;
+}
+
+.text_temp1 {
+    font-size: 1em;
+    color: #666;
+    position: absolute;
+}
+
+.temp2 {
+    left: 240px;
+    bottom: 25px;
+    color: #000;
+    position: absolute;
 }

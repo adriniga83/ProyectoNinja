@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require data-confirm-modal
+//= require bootstrap-select
 //= require turbolinks
 //= require_tree .

@@ -78,7 +78,7 @@ class EstanteriaController < ApplicationController
     end
     
     if @flag_serie == "true"
-      
+
       title = "titulo"+params[:lotengo]
       average = "puntuacion"+params[:lotengo]
       genre = "genero"+params[:lotengo]
@@ -89,6 +89,17 @@ class EstanteriaController < ApplicationController
       soporte = "soporte"+params[:lotengo]
       num_copias = "num_copias"+params[:lotengo]
       ubicacion = "ubicacion"+params[:lotengo]
+      num_seasons = "season"+params[:lotengo]
+      status = "estatus"+params[:lotengo]
+      
+      arrayTemp = Array.new
+      
+      (1..params[num_seasons].to_i).each do |i|
+        temps = "checkbox"+i.to_s
+        if params[temps] != nil
+          arrayTemp << i
+        end
+      end
 
       @serie = Serie.new
       @serie.titulo = params[title] 
@@ -102,7 +113,10 @@ class EstanteriaController < ApplicationController
       @serie.soporte = params[soporte]
       @serie.num_copias = params[num_copias]
       @serie.ubicacion = params[ubicacion]
+      @serie.num_seasons = params[num_seasons]
+      @serie.status = params[status]
       @serie.prestado = 0
+      @serie.temporadas = arrayTemp
 
       @serie.save
 
@@ -198,7 +212,7 @@ class EstanteriaController < ApplicationController
       if @edit == "true"
         @pelicula = Pelicula.where(params[:id])
         @pelicula.each do |pelicula|
-          if pelicula.id_user == current_user.id && pelicula.id_pelicula.to_s == params[:id]
+          if pelicula.id_user == current_user.id && pelicula.id_pelicula.to_s == params[:id] && serie.soporte == params[:soporte]
            pelicula.num_copias = params[:num_copias]
            pelicula.ubicacion = params[:ubicacion]
            pelicula.save
@@ -231,14 +245,23 @@ class EstanteriaController < ApplicationController
       
       @edit = params[:edit]
       @prestar = params[:prestar]
-
+      
+      arrayTemp = Array.new
+      
       if @edit == "true"
         @serie = Serie.where(params[:id])
         @serie.each do |serie|
-          if serie.id_user == current_user.id && serie.id_serie.to_s == params[:id]
-           serie.num_copias = params[:num_copias]
-           serie.ubicacion = params[:ubicacion]
-           serie.save
+          if serie.id_user == current_user.id && serie.id_serie.to_s == params[:id] && serie.soporte == params[:soporte]
+            serie.num_copias = params[:num_copias]
+            serie.ubicacion = params[:ubicacion]
+            (1..params[:num_seasons].to_i).each do |i|
+              temps = "checkbox"+i.to_s
+              if params[temps] != nil
+                arrayTemp << i
+              end
+            end
+            serie.temporadas = arrayTemp
+            serie.save
           end
         end
       end
