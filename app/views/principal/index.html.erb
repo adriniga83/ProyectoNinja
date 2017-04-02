@@ -65,8 +65,8 @@
                             <span class="caret"></span>
                           </a>
                           <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownLink">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Perfil</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Mi cuenta</a></li>
+                            <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Perfil</a></li>-->
+                            <li role="presentation"><%= link_to 'Mi cuenta',edit_user_registration_path %></li>
                             <li role="presentation" class="divider"></li>
                             <li role="presentation"><%= link_to 'Desconectar', destroy_user_session_path, method: :delete %></li>
                           </ul>
@@ -130,38 +130,38 @@
                             </a>
                         </li>-->
                         <li>
-                            <a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Inicio</a>
+                            <a href=""><span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Inicio</a>
                         </li>
                         <li>
-                            <a href="#"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>  Mi estantería</a>
+                            <a href=""><span class="glyphicon glyphicon-book" aria-hidden="true"></span>  Mi estantería</a>
                         </li>
                         <li>
-                            <a href="#"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>  Novedades</a>
+                            <a href=""><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>  Novedades</a>
                         </li> 
                         <li>
-                            <a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>  Búsqueda</a>
+                            <a href=""><span class="glyphicon glyphicon-search" aria-hidden="true"></span>  Búsqueda</a>
                         </li>
                         <li>
-                            <a href="#"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>  Listas</a>
+                            <a href=""><span class="glyphicon glyphicon-list" aria-hidden="true"></span>  Listas</a>
                         </li>
                         <li>
-                            <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Perfil</a>
+                            <a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Perfil</a>
                         </li>
                         <hr class="hr-separator"/>    
                         <li style="font-size: x-small; color: #999999; line-height: 20px;">
-                            <a href="#">Preguntas frecuentes</a>
+                            <a href="">Preguntas frecuentes</a>
                         </li>
                         <li style="font-size: x-small; color: #999999; line-height: 20px;">
-                            <a href="#">Qué es Declivia</a>
+                            <a href="">Qué es Declivia</a>
                         </li>
                         <li style="font-size: x-small; color: #999999; line-height: 20px;">
-                            <a href="#">Quiénes somos</a>
+                            <a href="">Quiénes somos</a>
                         </li>
                         <li style="font-size: x-small; color: #999999; line-height: 20px;">
-                            <a href="#">Privacidad y condiciones</a>
+                            <a href="">Privacidad y condiciones</a>
                         </li>
                         <li style="font-size: x-small; color: #999999; line-height: 20px;">
-                            <a href="#">Política de cookies</a>
+                            <a href="">Política de cookies</a>
                         </li>
                     </ul>
                 </div>

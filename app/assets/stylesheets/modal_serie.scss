@@ -350,8 +350,8 @@
 }
 
 .temp1 {
-    left: 290px;
-    bottom: 10px;
+    right: 0px;
+    top: 45px;
     color: #000;
     position: absolute;
 }
@@ -360,6 +360,18 @@
     font-size: 1em;
     color: #666;
     position: absolute;
+}
+
+.bt_temp1 {
+    background-color: #f3f3f3;
+    text-decoration: none;
+    color: #68aba7;
+    font-weight: bold;
+    border: 1px solid #68aba7;
+}
+
+.li_temp1 {
+    margin-left: 10px;
 }
 
 .temp2 {

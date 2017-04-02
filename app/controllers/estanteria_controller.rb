@@ -72,7 +72,10 @@ class EstanteriaController < ApplicationController
 
       @estanteria.save
 
-      #redirect_to search_path(:busqueda => params[:busqueda])
+      #redirect_to search_path
+     
+      
+      redirect_to estanteria_path
 
       #render plain: params[:sipnosis].inspect
     end
@@ -126,6 +129,8 @@ class EstanteriaController < ApplicationController
       @estanteria.user_id = current_user.id
 
       @estanteria.save
+      
+      redirect_to estanteria_path
       
     end
   end
@@ -212,7 +217,7 @@ class EstanteriaController < ApplicationController
       if @edit == "true"
         @pelicula = Pelicula.where(params[:id])
         @pelicula.each do |pelicula|
-          if pelicula.id_user == current_user.id && pelicula.id_pelicula.to_s == params[:id] && serie.soporte == params[:soporte]
+          if pelicula.id_user == current_user.id && pelicula.id_pelicula.to_s == params[:id] && pelicula.soporte == params[:soporte]
            pelicula.num_copias = params[:num_copias]
            pelicula.ubicacion = params[:ubicacion]
            pelicula.save

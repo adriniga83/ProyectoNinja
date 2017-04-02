@@ -29,6 +29,7 @@ class SearchController < ApplicationController
       bodyjson = JSON.parse(response.body)
       @base_url = bodyjson['images']['base_url']
       @sizes = bodyjson['images']['poster_sizes']
+      @parametro = params[:titulo]
     end
     
     if @categoria == "Discos"

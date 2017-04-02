@@ -1,26 +1,146 @@
-<h2>Log in</h2>
+<html class="no-js" lang="es"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Declivia</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <%= stylesheet_link_tag 'principal', media: "all" %>
+        <%= stylesheet_link_tag 'sidebar', media: "all" %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <!-- , 'data-turbolinks-track' iba en la línea de arriba-->
+        <%= csrf_meta_tags %>
+                    
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <!-- El logotipo y el icono que despliega el menú se agrupan para mostrarlos mejor en los dispositivos móviles -->
+            <div class="container-fluid">    
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--<span class="navbar-brand" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>-->
+                    <a class="navbar-brand" style="color: white;" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
+                    <a class="navbar-brand" style="color: white;" href="#">Declivia</a>
+                    <a class="navbar-brand" style="color: white; font-size: 15px;" href="#">Novedades</a>
+                    <a class="navbar-brand" style="color: white; font-size: 15px;" href="#">¿Qué es Declivia?</a>                    
+                </div>                
+            </div>
+        </nav>
+        <div id="wrapper" class="toggled">
+            <div class="container-fluid">
+            <!-- Sidebar -->
+                <div id="sidebar-wrapper">
+                    <ul class="sidebar-nav">
+                        <li>
+                            <p></p>
+                        </li>
+                        <!--<li class="sidebar-brand">
+                            <a href="#" class="navbar-brand">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile
+                            </a>
+                        </li>-->
+                        <li>
+                            <a href=""><span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Inicio</a>
+                        </li>
+                        <li>
+                            <a href=""><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>  Novedades</a>
+                        </li> 
+                        <li>
+                            <a href=""><span class="glyphicon glyphicon-search" aria-hidden="true"></span>  Búsqueda</a>
+                        </li>
+                        <li>
+                            <a href=""><span class="glyphicon glyphicon-list" aria-hidden="true"></span>  Listas</a>
+                        </li>
+                        <hr class="hr-separator"/>    
+                        <li style="font-size: x-small; color: #999999; line-height: 20px;">
+                            <a href="">Preguntas frecuentes</a>
+                        </li>
+                        <li style="font-size: x-small; color: #999999; line-height: 20px;">
+                            <a href="">Qué es Declivia</a>
+                        </li>
+                        <li style="font-size: x-small; color: #999999; line-height: 20px;">
+                            <a href="">Quiénes somos</a>
+                        </li>
+                        <li style="font-size: x-small; color: #999999; line-height: 20px;">
+                            <a href="">Privacidad y condiciones</a>
+                        </li>
+                        <li style="font-size: x-small; color: #999999; line-height: 20px;">
+                            <a href="">Política de cookies</a>
+                        </li>  
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="jumbotron text-center tam-jumbo color-jumbo">
+                <h1>¡Bienvenidos a Declivia!</h1>
+                <p>Tu biblioteca digital donde podrás tener organizada tu colección de películas, discos y videojuegos. </p>
+                <div class="panel panel-primary color-registro tam-registro" style="background-color: #9AE6FC;">
+                    <div class="panel-heading">
+                        Inicia tu sesión
+                    </div>
+                    <div class="panel-body">
+                        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                            <%= devise_error_messages! %>
+                            <div class="login-element text-left">
+                              <label for="user">Nombre de usuario</label>
+                              <div class="input-group">
+                                  <%= f.text_field :user, autofocus: true, :class => "form-control", :placeholder => 'Usuario', :required=> true%>
+                                  <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                              </div>
+                            </div>                            
+                            <div class="login-element text-left">  
+                              <label for="password">Contraseña</label>
+                              <div class="input-group">
+                                  <%= f.password_field :password, :class=> "form-control", :placeholder=> 'Password', :required=> true %>
+                                  <span class="input-group-addon">
+                                      <span class="glyphicon glyphicon-lock"></span>
+                                  </span>
+                              </div>
+                            </div> 
+                            <div class="checkbox login-element">
+                              <% if devise_mapping.rememberable? -%>
+                              <b><label><%= f.check_box :remember_me %><span>Recordar mis datos</span></label>
+                              <% end -%>
+                              <span>·</span>
+                              <%= link_to "¿Olvidaste tu contraseña?", new_password_path(resource_name) %>
+                                <div class="login-element"></div>
+                            </div>
+                            <div class="login-element"><p></p></div>
+                            <%= f.submit "Iniciar Sesión", :class=> "btn btn-lg btn-block btn-primary" %>
+                            <p></p>
+                            <div class="u-textCenter">
+                              <label>
+                                ¿No tienes cuenta?
+                                <%= link_to "Regístrate", root_path %>
+                              </label>
+                            </div>                            
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </body>
+    
+    <!-- Menu Toggle Script -->
+    <script>
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+      });
+    </script>
+    
+</html>
