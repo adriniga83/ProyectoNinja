@@ -18,15 +18,22 @@
                 padding-bottom: 20px;
             }
         </style>
-        <%= stylesheet_link_tag 'principal', media: "all" %>
-        <%= stylesheet_link_tag 'sidebar', media: "all" %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-        <!-- , 'data-turbolinks-track' iba en la línea de arriba-->
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <%= stylesheet_link_tag 'principal_login', media: "all" %>
+        <%= stylesheet_link_tag 'sidebar_login', media: "all" %>
+        <%= javascript_include_tag 'application' => true %>
+        <%= javascript_include_tag 'principal' => true %>
         <%= csrf_meta_tags %>
+
+        <script>
+          $('.dropdown-toggle').dropdown();
+        </script>
+        
+        <!--<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>-->
                     
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top navbarColor" role="navigation">
                 <!-- El logotipo y el icono que despliega el menú se agrupan para mostrarlos mejor en los dispositivos móviles -->
             <div class="container-fluid">    
                 <div class="navbar-header">
@@ -40,10 +47,75 @@
                     <a class="navbar-brand" style="color: white;" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
                     <a class="navbar-brand" style="color: white;" href="#">Declivia</a>
                     <a class="navbar-brand" style="color: white; font-size: 15px;" href="#">Novedades</a>
-                    <a class="navbar-brand" style="color: white; font-size: 15px;" href="#">¿Qué es Declivia?</a>                    
+                    <a class="navbar-brand" style="color: white; font-size: 15px;" href="/estanteria">Mi estantería</a>
+                    <a class="navbar-brand" style="color: white; font-size: 15px;" href="#">Listas</a>
                 </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <div class="navbar-right">
+                        <a class="navbar-brand" style="color: white; font-size: 15px;" data-toggle="collapse" href="#searchToggle"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Búsqueda</a>
+                        <span class="navbar-brand" style="color: white; font-size: 15px;">
+                          <% if current_user %>
+                               
+                          <% end %>
+                        </span>
+                        <div class="dropdown navbar-brand">
+                          <% if current_user %>
+                          <a class="dropdown-toggle" type="button" id="dropdownLink" data-toggle="dropdown" style="color: white; font-size: 15px; text-decoration:none;">
+                            Bienvenido <%= current_user.user %>
+                            <span class="caret"></span>
+                          </a>
+                          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownLink">
+                            <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Perfil</a></li>-->
+                            <li role="presentation"><%= link_to 'Mi cuenta',edit_user_registration_path %></li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation"><%= link_to 'Desconectar', destroy_user_session_path, method: :delete %></li>
+                          </ul>
+                          <% end %>
+                        </div>
+                    </div>     
+                </div>  
             </div>
         </nav>
+        <div id="searchToggle" class="collapse">
+          <div class="container-fluid tam-search">
+            <%= form_tag({:controller => "/search", :action => "search"}, :method => "post") do |f|%>
+            <div class="input-group lugar-search" id="adv-search" style="margin-top: 50px;">
+             <%= text_field_tag "titulo", "", type:"text", :required => "required", class:"form-control", placeholder:"Busca una película, disco, juego..." %> 
+             <!--<input type="text" class="form-control" placeholder="Busca una película, disco, juego..." />-->
+             <div class="input-group-btn">
+                 <div class="btn-group" role="group">
+                     <div class="dropdown dropdown-lg">
+                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                         <div class="dropdown-menu dropdown-menu-right" role="menu">
+                           <div class="form-horizontal" role="form">
+                            <div class="form-group">
+                              <label for="filter">Buscar por</label>
+                              <fieldset>
+                                <%= radio_button_tag "id", "Peliculas", true %>
+                                <label for="id_Peliculas">Películas</label>
+                                <%= radio_button_tag "id", "Series"%>
+                                <label for="id_Series">Series</label>
+                                <%= radio_button_tag "id", "Discos"%>
+                                <label for="id_Discos">Discos</label>
+                                <%= radio_button_tag "id", "Juegos"%>
+                                <label for="id_Juegos">Juegos</label>
+                              </fieldset>                              
+                            </div>
+                          </div>
+                         </div>
+                     </div> 
+                     <span class="input-group-btn">
+                      <%= button_tag(:class => "btn btn-primary") do%>
+                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                      <%end%>
+                         <!--<button type="button" class="btn btn-primary">--><span class="glyphicon glyphicon-search" aria-hidden="true"></span><!--</button>-->
+                     </span>
+                 </div>
+             </div>
+            <% end %>
+            </div>
+         </div>
+        </div>
         <div id="wrapper" class="toggled">
             <div class="container-fluid">
             <!-- Sidebar -->
@@ -61,6 +133,9 @@
                             <a href=""><span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Inicio</a>
                         </li>
                         <li>
+                            <a href=""><span class="glyphicon glyphicon-book" aria-hidden="true"></span>  Mi estantería</a>
+                        </li>
+                        <li>
                             <a href=""><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>  Novedades</a>
                         </li> 
                         <li>
@@ -68,6 +143,9 @@
                         </li>
                         <li>
                             <a href=""><span class="glyphicon glyphicon-list" aria-hidden="true"></span>  Listas</a>
+                        </li>
+                        <li>
+                            <a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Perfil</a>
                         </li>
                         <hr class="hr-separator"/>    
                         <li style="font-size: x-small; color: #999999; line-height: 20px;">
@@ -84,7 +162,7 @@
                         </li>
                         <li style="font-size: x-small; color: #999999; line-height: 20px;">
                             <a href="">Política de cookies</a>
-                        </li>  
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -157,11 +235,10 @@
                     </div>
                 </div>
                 
-                <h3>Cancel my account</h3>
+                <h3>Eliminar cuenta</h3>
 
-                <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+                <p><%= button_to "Eliminar mi cuenta", user_registration_path(resource_name), method: :delete, :class => "btn btn-danger" %></p>
 
-                <%= link_to "Back", :back %>
             </div>
         </div>
     </body>
