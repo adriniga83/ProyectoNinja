@@ -25,6 +25,7 @@
         <%= stylesheet_link_tag 'peliculas', media: "all" %>
         <%= stylesheet_link_tag 'modal_pelicula', media: "all" %>
         <%= stylesheet_link_tag 'modal_serie', media: "all" %>
+        <%= stylesheet_link_tag 'modal_juego', media: "all" %>
         <%= stylesheet_link_tag 'search_peliculas', media: "all" %>
         <%= stylesheet_link_tag 'bootstrap-select_and_overrides', media: "all" %>
         <%= javascript_include_tag 'application' => true %>
@@ -102,8 +103,8 @@
                             <label for="id_Peliculas">Películas</label>
                             <%= radio_button_tag "id", "Series"%>
                             <label for="id_Series">Series</label>
-                            <%= radio_button_tag "id", "Discos"%>
-                            <label for="id_Discos">Discos</label>
+                            <%= radio_button_tag "id", "Musica"%>
+                            <label for="id_Musica">Música</label>
                             <%= radio_button_tag "id", "Juegos"%>
                             <label for="id_Juegos">Juegos</label>
                           </fieldset>                              
@@ -183,12 +184,7 @@
                 <%= render 'peliculas' %>
               <% end %>
               <% if @juego %>
-              <% @juego.each do |juego| %>
-                <% imagen = juego.image %>
-                <img src="<%= imagen['thumb_url'] %>">
-                <%= juego.name %>
-                <%= juego.deck %><br>
-              <% end %>
+                <%= render 'juegos' %>
               <% end %>
               <% if @serie %>
                 <%= render 'series' %>

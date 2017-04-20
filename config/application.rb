@@ -23,5 +23,7 @@ module ProyectoNinja
     configuration.backdrop_sizes
     configuration.profile_sizes
     configuration.logo_sizes
+    
+    GiantBomb::Api.key('77f053cd9c457f08d9b9f5d67b617f7f5e072f18')
   end
 end

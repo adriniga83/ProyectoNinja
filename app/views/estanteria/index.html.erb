@@ -24,6 +24,7 @@
         <%= stylesheet_link_tag 'peliculas', media: "all" %>
         <%= stylesheet_link_tag 'modal_pelicula', media: "all" %>
         <%= stylesheet_link_tag 'modal_serie', media: "all" %>
+        <%= stylesheet_link_tag 'modal_juego', media: "all" %>
         <%= stylesheet_link_tag 'estanteria', media: "all" %>
         <%= javascript_include_tag 'application' => true %>
         <%= javascript_include_tag 'principal' => true %>
@@ -99,8 +100,8 @@
                                 <label for="id_Peliculas">Películas</label>
                                 <%= radio_button_tag "id", "Series"%>
                                 <label for="id_Series">Series</label>
-                                <%= radio_button_tag "id", "Discos"%>
-                                <label for="id_Discos">Discos</label>
+                                <%= radio_button_tag "id", "Musica"%>
+                                <label for="id_Musica">Música</label>
                                 <%= radio_button_tag "id", "Juegos"%>
                                 <label for="id_Juegos">Juegos</label>
                               </fieldset>                              
@@ -178,18 +179,24 @@
                     <%= link_to "Películas", {:controller => "estanteria", :action => "index", :multimedia => "peliculas", :select_filtrar => "Todo"} %>
                     -
                     <%= link_to "Series", {:controller => "estanteria", :action => "index", :multimedia => "series"} %>
-                    - Discos - Juegos
+                    - 
+                    <%= link_to "Juegos", {:controller => "estanteria", :action => "index", :multimedia => "juegos"} %>
+                    - Música
                 </div>
                 <% if @multimedia == "peliculas" %>
                   <%= render 'peliculas_Acciones' %>
                 <% elsif @multimedia == "series" %>
                   <%= render 'series_Acciones' %>
+                <% elsif @multimedia == "juegos" %>
+                  <%= render 'juegos_Acciones' %>
                 <% end %>
               </div>
               <% if @multimedia == "peliculas" %>
                 <%= render 'multimedia_peliculas' %>
               <% elsif @multimedia == "series" %>
                 <%= render 'multimedia_series' %>
+              <% elsif @multimedia == "juegos" %>
+                <%= render 'multimedia_juegos' %>
               <% end %>
             </div>
         </div>

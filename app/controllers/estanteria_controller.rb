@@ -8,6 +8,8 @@ class EstanteriaController < ApplicationController
     @medios = ["Todo", "DVD", "Blu-ray", "HD-DVD"]
     @letras = ["#","A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     @filtrado = {"Medios" => @medios, "Géneros" => @generos}
+    @plataformas = ["Super Nintendo", "Nintendo 64", "GameCube", "Wii", "Wii U", "Nintendo Switch", "Game Boy", "Game Boy Color", "Game Boy Advance", "Nintendo DS", "Nintendo 3DS", "PlayStation", "PlayStation 2", "PlayStation 3", "PlayStation 4", "PlayStation Portable", "PlayStation Vita", "Xbox", "Xbox 360", "Xbox One", "PC", "Genesis"]
+    @filtro_juego = {"Plataformas" => @plataformas}
     
     @multimedia = params[:multimedia]
     
@@ -133,6 +135,49 @@ class EstanteriaController < ApplicationController
       redirect_to estanteria_path
       
     end
+    
+    if @flag_juego == "true"    
+      
+      title = "titulo"+params[:lotengo]
+      plataform = "plataforma"+params[:lotengo]
+      release = "estreno"+params[:lotengo]
+      overview = "sipnosis"+params[:lotengo]
+      id_game = "id_juego"+params[:lotengo]
+      image = "poster"+params[:lotengo]
+      soporte = "soporte"+params[:lotengo]
+      num_copias = "num_copias"+params[:lotengo]
+      ubicacion = "ubicacion"+params[:lotengo]
+
+      @juego = Juego.new
+      @juego.titulo = params[title] 
+      @juego.plataformas = params[plataform]
+      @juego.estreno = params[release]
+      @juego.sipnosis = params[overview]
+      @juego.id_juego = params[id_game]
+      @juego.imagen_file_name = params[image]
+      @juego.id_user = current_user.id
+      @juego.soporte = params[soporte]
+      @juego.num_copias = params[num_copias]
+      @juego.ubicacion = params[ubicacion]
+      @juego.prestado = 0
+
+      #@pelicula.poster_from_url(params[:poster])
+
+      @juego.save
+
+      @estanteria = Estanterium.new
+      @estanteria.id_videojuego = @juego.id_juego
+      @estanteria.medio = @juego.soporte
+      @estanteria.user_id = current_user.id
+
+      @estanteria.save
+
+      #redirect_to search_path     
+      
+      redirect_to estanteria_path
+
+      #render plain: params[:sipnosis].inspect
+    end    
   end
   
   def destroy
@@ -200,6 +245,27 @@ class EstanteriaController < ApplicationController
       redirect_to estanteria_path
       
     end
+    
+    if @flag_juego == "true"
+    
+    id_game = "id_juego"+params[:lotengo]
+    soporte = "soporte"+params[:lotengo]
+    
+    @delete = Juego.where(["soporte = :soporte and id_juego = :id", { id: params[id_game], soporte: params[soporte] }])
+    @eliminate = Estanterium.where(["medio = :medio and id_videojuego = :id", { id: params[id_game], medio: params[soporte] }])
+    @delete.each do |borrar|
+      if borrar.id_user == current_user.id && borrar.id_juego.to_s == params[id_game]
+        borrar.destroy
+      end
+    end
+    @eliminate.each do |borrar1|
+      if borrar1.user_id == current_user.id && borrar1.id_videojuego == params[id_game]
+        borrar1.destroy
+      end
+    end
+    redirect_to estanteria_path
+    
+    end    
   end
   
   def actualizar
@@ -285,6 +351,43 @@ class EstanteriaController < ApplicationController
               serie.prestado = 0
               serie.pres_prestamo = nil
               serie.save
+            end
+          end
+        end
+      end
+      
+    end
+    
+    if @flag_juego == "true"
+    
+      @edit = params[:edit]
+      @prestar = params[:prestar]
+
+      if @edit == "true"
+        @juego = Juego.where(params[:id])
+        @juego.each do |juego|
+          if juego.id_user == current_user.id && juego.id_juego.to_s == params[:id] && juego.soporte == params[:soporte]
+           juego.num_copias = params[:num_copias]
+           juego.ubicacion = params[:ubicacion]
+           juego.save
+          end
+        end
+      end
+
+      if @prestar == "true"
+        @p = params[:id_prestar]
+        @juego = Juego.where(params[:id])
+        @juego.each do |juego|
+          if juego.id_user == current_user.id && juego.id_juego.to_s == params[:id] && juego.soporte == params[:soporte]
+            if @p == "Si"
+              juego.prestado = 1
+              juego.pres_prestamo = params[:pres_prestamo]
+              juego.save
+            end
+            if @p == "No"
+              juego.prestado = 0
+              juego.pres_prestamo = nil
+              juego.save
             end
           end
         end

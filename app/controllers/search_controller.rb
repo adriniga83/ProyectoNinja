@@ -2,10 +2,13 @@ class SearchController < ApplicationController
   require 'json'
   require 'uri'
   require 'net/http'
+  require 'openssl'
 
   before_action :authenticate_user!
   
   def search
+    
+    @plataformas = ["Super Nintendo", "Nintendo 64", "GameCube", "Wii", "Wii U", "Nintendo Switch", "Game Boy", "Game Boy Color", "Game Boy Advance", "Nintendo DS", "Nintendo 3DS", "PlayStation", "PlayStation 2", "PlayStation 3", "PlayStation 4", "PlayStation Portable", "PlayStation Vita", "Xbox", "Xbox 360", "Xbox One", "PC", "Genesis"]
  
     @categoria = params[:id]
     
@@ -32,7 +35,7 @@ class SearchController < ApplicationController
       @parametro = params[:titulo]
     end
     
-    if @categoria == "Discos"
+    if @categoria == "Musica"
       
      app_key = 'KWqwYwVmtTmeqhdePChA'
      app_secret = 'vKhpoTljtDVzTOvsFhoIExnVWLukuFwI'
@@ -51,8 +54,8 @@ class SearchController < ApplicationController
     end
     
     if @categoria == "Juegos"
-      
-      @juego = GiantBomb::Game.find(params[:titulo])
+     
+     @juego = GiantBomb::Game.find(params[:titulo])
       
     end
     

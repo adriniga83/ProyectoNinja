@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326173848) do
+ActiveRecord::Schema.define(version: 20170418082433) do
 
   create_table "estanteria", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "id_estanteria"
@@ -24,6 +24,26 @@ ActiveRecord::Schema.define(version: 20170326173848) do
     t.integer  "user_id"
     t.string   "medio"
     t.index ["user_id"], name: "Usuario_idx", using: :btree
+  end
+
+  create_table "juegos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "titulo"
+    t.string   "plataformas"
+    t.string   "sipnosis"
+    t.date     "estreno"
+    t.integer  "id_user"
+    t.integer  "id_juego"
+    t.string   "soporte"
+    t.string   "num_copias"
+    t.string   "ubicacion"
+    t.boolean  "prestado"
+    t.string   "pres_prestamo"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
   end
 
   create_table "peliculas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -53,22 +73,30 @@ ActiveRecord::Schema.define(version: 20170326173848) do
 
   create_table "series", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "titulo"
-    t.string   "genero"
-    t.string   "sipnosis"
+    t.text     "genero",              limit: 65535
+    t.text     "sipnosis",            limit: 65535
     t.date     "estreno"
-    t.integer  "puntuacion"
+    t.decimal  "puntuacion",                        precision: 5, scale: 2
     t.integer  "duracion"
     t.string   "actores"
     t.integer  "id_user"
     t.integer  "id_serie"
     t.integer  "id_imdb"
     t.string   "soporte"
-    t.string   "num_copias"
+    t.integer  "num_copias"
     t.string   "ubicacion"
-    t.boolean  "prestado"
-    t.string   "pers_prestamo"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "prestado",            limit: 1
+    t.string   "pres_prestamo"
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
+    t.integer  "num_seasons"
+    t.string   "status",              limit: 45
+    t.text     "temporadas",          limit: 65535
+    t.index ["id_user"], name: "User_idx", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
