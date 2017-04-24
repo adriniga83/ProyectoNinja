@@ -22,9 +22,11 @@
         <%= stylesheet_link_tag 'principal_login', media: "all" %>
         <%= stylesheet_link_tag 'sidebar_login', media: "all" %>
         <%= stylesheet_link_tag 'peliculas', media: "all" %>
+        <%= stylesheet_link_tag 'musica', media: "all" %>
         <%= stylesheet_link_tag 'modal_pelicula', media: "all" %>
         <%= stylesheet_link_tag 'modal_serie', media: "all" %>
         <%= stylesheet_link_tag 'modal_juego', media: "all" %>
+        <%= stylesheet_link_tag 'modal_musica', media: "all" %>
         <%= stylesheet_link_tag 'estanteria', media: "all" %>
         <%= javascript_include_tag 'application' => true %>
         <%= javascript_include_tag 'principal' => true %>
@@ -50,7 +52,7 @@
                     </button>
                     <!--<span class="navbar-brand" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>-->
                     <a class="navbar-brand" style="color: white;" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
-                    <a class="navbar-brand" style="color: white;" href="#">Declivia</a>
+                    <a class="navbar-brand" style="color: white;" href="/principal">Declivia</a>
                     <a class="navbar-brand" style="color: white; font-size: 15px;" href="#">Novedades</a>
                     <a class="navbar-brand" style="color: white; font-size: 15px;" href="/estanteria">Mi estantería</a>
                     <a class="navbar-brand" style="color: white; font-size: 15px;" href="#">Listas</a>
@@ -181,7 +183,8 @@
                     <%= link_to "Series", {:controller => "estanteria", :action => "index", :multimedia => "series"} %>
                     - 
                     <%= link_to "Juegos", {:controller => "estanteria", :action => "index", :multimedia => "juegos"} %>
-                    - Música
+                    - 
+                    <%= link_to "Música", {:controller => "estanteria", :action => "index", :multimedia => "musica"} %>
                 </div>
                 <% if @multimedia == "peliculas" %>
                   <%= render 'peliculas_Acciones' %>
@@ -189,6 +192,8 @@
                   <%= render 'series_Acciones' %>
                 <% elsif @multimedia == "juegos" %>
                   <%= render 'juegos_Acciones' %>
+                <% elsif @multimedia == "musica" %>
+                  <%= render 'musica_Acciones' %>
                 <% end %>
               </div>
               <% if @multimedia == "peliculas" %>
@@ -197,6 +202,8 @@
                 <%= render 'multimedia_series' %>
               <% elsif @multimedia == "juegos" %>
                 <%= render 'multimedia_juegos' %>
+              <% elsif @multimedia == "musica" %>
+                <%= render 'multimedia_musica' %>
               <% end %>
             </div>
         </div>

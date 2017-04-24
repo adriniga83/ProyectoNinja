@@ -21,6 +21,13 @@
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <%= stylesheet_link_tag 'principal_login', media: "all" %>
         <%= stylesheet_link_tag 'sidebar_login', media: "all" %>
+        <%= stylesheet_link_tag 'peliculas', media: "all" %>
+        <%= stylesheet_link_tag 'musica', media: "all" %>
+        <%= stylesheet_link_tag 'modal_pelicula', media: "all" %>
+        <%= stylesheet_link_tag 'modal_serie', media: "all" %>
+        <%= stylesheet_link_tag 'modal_juego', media: "all" %>
+        <%= stylesheet_link_tag 'modal_musica', media: "all" %>
+        <%= stylesheet_link_tag 'estanteria', media: "all" %>
         <%= javascript_include_tag 'application' => true %>
         <%= javascript_include_tag 'principal' => true %>
         <%= csrf_meta_tags %>
@@ -169,6 +176,14 @@
         </div>
         <div class="container-fluid">
             <div class="jumbotron text-center tam-jumbo color-jumbo">
+                <h3 style="font-weight: bold">Últimas películas añadidas</h3>
+                <%= render 'peliculas' %>
+                <h3 style="font-weight: bold">Últimas series añadidas</h3>
+                <%= render 'series' %>
+                <h3 style="font-weight: bold">Últimos juegos añadidos</h3>
+                <%= render 'juegos' %>
+                <h3 style="font-weight: bold">Últimos discos añadidos</h3>
+                <%= render 'musica' %>
             </div>
         </div>
       </div>

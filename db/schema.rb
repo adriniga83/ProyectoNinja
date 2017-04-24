@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418082433) do
+ActiveRecord::Schema.define(version: 20170424083334) do
 
   create_table "estanteria", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "id_estanteria"
@@ -28,11 +28,32 @@ ActiveRecord::Schema.define(version: 20170418082433) do
 
   create_table "juegos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "titulo"
-    t.string   "plataformas"
-    t.string   "sipnosis"
+    t.text     "plataformas",         limit: 65535
+    t.text     "sipnosis",            limit: 65535
     t.date     "estreno"
     t.integer  "id_user"
     t.integer  "id_juego"
+    t.string   "soporte"
+    t.integer  "num_copias"
+    t.string   "ubicacion"
+    t.integer  "prestado",            limit: 1
+    t.string   "pres_prestamo"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
+    t.index ["id_user"], name: "User_idx", using: :btree
+  end
+
+  create_table "musicas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "titulo"
+    t.string   "genero"
+    t.date     "estreno"
+    t.string   "lista_canciones"
+    t.integer  "id_user"
+    t.integer  "id_musica"
     t.string   "soporte"
     t.string   "num_copias"
     t.string   "ubicacion"

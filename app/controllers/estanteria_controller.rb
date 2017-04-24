@@ -1,4 +1,8 @@
 class EstanteriaController < ApplicationController
+  require 'json'
+  require 'uri'
+  require 'net/http'
+  require 'openssl'
 
   before_action :authenticate_user!
   
@@ -9,7 +13,9 @@ class EstanteriaController < ApplicationController
     @letras = ["#","A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     @filtrado = {"Medios" => @medios, "Géneros" => @generos}
     @plataformas = ["Super Nintendo", "Nintendo 64", "GameCube", "Wii", "Wii U", "Nintendo Switch", "Game Boy", "Game Boy Color", "Game Boy Advance", "Nintendo DS", "Nintendo 3DS", "PlayStation", "PlayStation 2", "PlayStation 3", "PlayStation 4", "PlayStation Portable", "PlayStation Vita", "Xbox", "Xbox 360", "Xbox One", "PC", "Genesis"]
+    @estilos =['Rock', 'Electronic', 'Pop', 'Folk, World, & Country', 'Jazz', 'Funk / Soul', "Hip Hop", 'Classical', 'Reggae', 'Latin', 'Stage & Screen', 'Blues', 'Non-Music', "Children's", 'Brass & Military']
     @filtro_juego = {"Plataformas" => @plataformas}
+    @filtro_musica = {'Generos' => @estilos}
     
     @multimedia = params[:multimedia]
     
@@ -31,7 +37,7 @@ class EstanteriaController < ApplicationController
     
     @flag_pelicula = params[:flag_pelicula]
     @flag_serie = params[:flag_serie]
-    @flag_disco = params[:flag_disco]
+    @flag_musica = params[:flag_musica]
     @flag_juego = params[:flag_juego]
     
     if @flag_pelicula == "true"    
@@ -177,7 +183,64 @@ class EstanteriaController < ApplicationController
       redirect_to estanteria_path
 
       #render plain: params[:sipnosis].inspect
-    end    
+    end  
+    
+    if @flag_musica == "true"   
+
+      canciones = "canciones"+params[:lotengo]
+
+      resource_url = URI(params[canciones])
+      http = Net::HTTP.new(resource_url.host, resource_url.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      request = Net::HTTP::Get.new(resource_url)
+      response = http.request(request)
+      bodyjson = JSON.parse(response.body)
+      @tracklist = bodyjson["tracklist"]
+      @lista_canciones = Array.new
+      
+      @tracklist.each do |list|
+        @lista_canciones << list['duration']+" "+list["position"]+" "+list["title"]
+      end
+      
+      title = "titulo"+params[:lotengo]
+      genre = "genero"+params[:lotengo]
+      release = "estreno"+params[:lotengo]
+      list = @lista_canciones
+      id_music = "id_musica"+params[:lotengo]
+      image = "poster"+params[:lotengo]
+      num_copias = "num_copias"+params[:lotengo]
+      ubicacion = "ubicacion"+params[:lotengo]
+
+      @musica = Musica.new
+      @musica.titulo = params[title] 
+      @musica.genero = params[genre]
+      @musica.estreno = params[release]
+      @musica.lista_canciones = @lista_canciones
+      @musica.id_musica = params[id_music]
+      @musica.imagen_file_name = params[image]
+      @musica.id_user = current_user.id
+      @musica.num_copias = params[num_copias]
+      @musica.ubicacion = params[ubicacion]
+      @musica.prestado = 0
+
+      #@pelicula.poster_from_url(params[:poster])
+
+      @musica.save
+
+      @estanteria = Estanterium.new
+      @estanteria.id_musica = @musica.id_musica
+      @estanteria.user_id = current_user.id
+
+      @estanteria.save
+
+      #redirect_to search_path     
+      
+      redirect_to estanteria_path
+
+      #render plain: params[:sipnosis].inspect
+    end
+    
   end
   
   def destroy
@@ -201,7 +264,7 @@ class EstanteriaController < ApplicationController
     
     @flag_pelicula = params[:flag_pelicula]
     @flag_serie = params[:flag_serie]
-    @flag_disco = params[:flag_disco]
+    @flag_musica = params[:flag_musica]
     @flag_juego = params[:flag_juego]
     
     if @flag_pelicula == "true"
@@ -265,14 +328,34 @@ class EstanteriaController < ApplicationController
     end
     redirect_to estanteria_path
     
-    end    
+    end   
+    
+    if @flag_musica == "true"
+    
+    id_musica = "id_musica"+params[:lotengo]
+
+    @delete = Musica.where(["id_musica = :id", { id: params[id_musica] }])
+    @eliminate = Estanterium.where(["id_musica = :id", { id: params[id_musica] }])
+    @delete.each do |borrar|
+      if borrar.id_user == current_user.id && borrar.id_musica.to_s == params[id_musica]
+        borrar.destroy
+      end
+    end
+    @eliminate.each do |borrar1|
+      if borrar1.user_id == current_user.id && borrar1.id_musica == params[id_musica]
+        borrar1.destroy
+      end
+    end
+    redirect_to estanteria_path
+    
+    end   
   end
   
   def actualizar
     
     @flag_pelicula = params[:flag_pelicula]
     @flag_serie = params[:flag_serie]
-    @flag_disco = params[:flag_disco]
+    @flag_musica = params[:flag_musica]
     @flag_juego = params[:flag_juego]
     
     if @flag_pelicula == "true"
@@ -388,6 +471,43 @@ class EstanteriaController < ApplicationController
               juego.prestado = 0
               juego.pres_prestamo = nil
               juego.save
+            end
+          end
+        end
+      end
+      
+    end
+    
+    if @flag_musica == "true"
+    
+      @edit = params[:edit]
+      @prestar = params[:prestar]
+
+      if @edit == "true"
+        @musica = Musica.where(params[:id])
+        @musica.each do |musica|
+          if musica.id_user == current_user.id && musica.id_musica.to_s == params[:id]
+           musica.num_copias = params[:num_copias]
+           musica.ubicacion = params[:ubicacion]
+           musica.save
+          end
+        end
+      end
+
+      if @prestar == "true"
+        @p = params[:id_prestar]
+        @musica = Musica.where(params[:id])
+        @musica.each do |musica|
+          if musica.id_user == current_user.id && musica.id_musica.to_s == params[:id]
+            if @p == "Si"
+              musica.prestado = 1
+              musica.pres_prestamo = params[:pres_prestamo]
+              musica.save
+            end
+            if @p == "No"
+              musica.prestado = 0
+              musica.pres_prestamo = nil
+              musica.save
             end
           end
         end
