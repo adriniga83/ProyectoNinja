@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   put '/estanteria', to: 'estanteria#actualizar', as: 'actualizar'
   patch '/estanteria', to: 'estanteria#borrar', as: 'borrar'
   
-  
+  get 'peliculas' => 'peliculas#index'
+  get 'listas' => 'listas#index'
   #put 'estanteria' => "estanteria#actualizar"
   
   #match '/estanteria', to: 'estanteria#actualizar', via: 'put'
