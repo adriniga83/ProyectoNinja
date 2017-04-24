@@ -13,9 +13,11 @@ Rails.application.routes.draw do
   
   get 'search' => "search#search"
   post 'search' => "search#search"
+  put 'search', to: 'search#actualizar', as: 'lista_canciones'
   
   put '/estanteria', to: 'estanteria#actualizar', as: 'actualizar'
   patch '/estanteria', to: 'estanteria#borrar', as: 'borrar'
+  
   
   #put 'estanteria' => "estanteria#actualizar"
   

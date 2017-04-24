@@ -1,0 +1,424 @@
+// Place all the styles related to the estanteria controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.totalM {
+    display: table;
+    width: 900px;
+    height: 180px;
+    background-color: #FFF;
+    float: none;
+    position: relative;
+    display: inline-block;
+    margin-top: 5em;
+}
+
+/* PARA INFORMACION */
+
+.infoM {
+    top: 10px;    
+    left: 335px;
+    position: absolute;
+    display: inline-block;
+}
+
+.nameM {
+        font-family: 'Roboto Condensed',sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 100%;
+    margin-bottom: 10px;
+    display: block;
+    text-align: left;
+    padding-right: 150px;
+    width: 700px;
+}
+
+.genresM {
+    width: auto;
+    height: auto;
+    font-style: italic;
+    color: #666;
+    font-size: 1em;
+    text-align: left;
+    display: block;
+    position: absolute;
+    left: 65px;
+    top: 62px;
+}
+
+.argumentoM {
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 120%;
+    margin-bottom: 5px;
+    color: #000;
+    text-align: left;
+    padding-top: 10px;
+    left: 0;
+    position: absolute;
+}
+
+.overview {   
+    width: auto;
+    height: auto;
+    text-align: left;
+    display: block;
+    padding-right: 10px;
+}
+
+.control:hover {
+    color: #28a1d8;
+    text-decoration: none;
+}
+
+.festrenoM {
+    left: 180px;
+    bottom: 55px;
+    color: #000;
+    font-size: 0.5em;
+    position: absolute;
+}
+
+.release_dateM {
+    color: #666;
+    font-size: 1em;
+    left: 245px;
+    bottom: 55px;
+    position: absolute;
+}
+
+.punt {
+    left: 10px;
+    bottom: 5px;
+    color: #000;
+    font-size: 0.7em;
+    position: absolute;
+}
+
+.vote_average {
+    font-size: 1em;
+    color: #666;
+    position: absolute;
+    left: 140px;
+    bottom: 5px;
+}
+
+.rating {
+    padding-top: 1px;
+}
+
+/* PARA POSTER */
+
+.movie_imageM {
+    display: table-row;
+    width: 155px;
+    margin-top: 10px;
+    margin-left: 10px;
+    display: inline-block;
+    height: 155px;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.55);
+    position: relative;
+    float: left;
+    border: 3px solid #242121;
+}
+
+.tam_posterM {
+    width: 155px;
+    height: 155px;
+}
+
+/* X DE CERRAR */
+
+.close-dialog {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    right: 0;
+    top: 0;
+    z-index: 1002;
+    color: white;
+}
+
+.close-dialog:hover {
+    color: grey;
+}
+
+/* BOTON LO TENGO */
+
+.eliminar {
+    position:absolute;
+    right:10px;
+    top:10px;
+    z-index:0;
+}
+
+.lo_tengo {
+    display: block;
+    padding: 0;
+    margin-bottom: 10px;
+    width: 125px;
+    color: #68aba7;
+    text-align: center;
+    border: solid 2px #72c1b9;
+    background-color: #fff;
+    -webkit-transition: background-color .2s ease-in-out;
+    -moz-transition: background-color .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out;
+    transition: background-color .2s ease-in-out;
+}
+
+.bt {
+    font-family: Arial;
+    font-size: 11px;
+    line-height: 30px;
+    padding: 0 23px;
+    height: 30px;
+    font-weight: bold;
+    color: #555;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid #e7e8e8;
+    background-color: #f3f3f3;
+    border-radius: 3px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.bt:hover {
+    background-color: #f3f3f3;
+    border-color: #d0d0d0;
+    color: #555;
+    text-decoration: none;
+}
+
+.rem {
+    background-color: #72c1b9;
+    color: #fff;  
+}
+
+.rem:hover {
+    background-color: #fff;
+    color: #72c1b9;
+}
+
+* > .fa.fa-hover-show,
+*:hover > .fa.fa-hover-hidden {
+  display: none;
+}
+*:hover > .fa.fa-hover-show {
+  display: inline-block;
+}
+
+/* PREV y NEXT */
+
+.next-issue {
+    display: block;
+    position: fixed;
+    top: 45%;
+    right: 22px;
+    width: 31px;
+    height: 34px;
+    overflow: hidden;
+    background: no-repeat 0 0 transparent;
+    color: #FFF;
+}
+
+.next-issue:hover {
+    color: grey;
+}
+
+.prev-issue {
+    display: block;
+    position: fixed;
+    top: 45%;
+    left: 0;
+    width: 31px;
+    height: 34px;
+    color: #FFF;
+    overflow: hidden;
+    background: no-repeat 0 -79px transparent;
+}
+
+.prev-issue:hover {
+    color: grey;
+}
+
+/* COPIAS Y SOPORTE */
+
+.medio {
+    left: 595px;
+    bottom: 5px;
+    color: #000;
+    font-size: 0.7em;
+    position: absolute;
+}
+
+.num_copy {
+    left: 715px;
+    bottom: 5px;
+    color: #000;
+    font-size: 0.7em;
+    position: absolute;
+}
+
+.ubi {
+    left: 465px;
+    bottom: 5px;
+    color: #000;
+    font-size: 0.7em;
+    position: absolute;
+}
+
+.prestado {
+    left: 355px;
+    bottom: 5px;
+    color: #000;
+    font-size: 0.7em;
+    position: absolute;
+}
+
+.sel_medio {
+    font-size: 1em;
+    color: #666;
+    position: absolute;
+    left: 650px;
+    bottom: 5px;
+}
+
+.text_copy {
+    font-size: 1em;
+    color: #666;
+    position: absolute;
+    left: 850px;
+    bottom: 5px;
+}
+
+.text_ubi {
+    font-size: 1em;
+    color: #666;
+    position: absolute;
+    left: 550px;
+    bottom: 5px;
+}
+
+.text_prestado {
+    font-size: 1em;
+    color: #666;
+    position: absolute;
+    left: 430px;
+    bottom: 5px;
+}
+
+.status {
+    left: 10px;
+    bottom: 55px;
+    color: #000;
+    font-size: 0.5em;
+    position: absolute;
+}
+
+.estatus {
+    color: #666;
+    font-size: 1em;
+    left: 75px;
+    bottom: 55px;
+    position: absolute;
+}
+
+.temporadas {
+    left: 170px;
+    bottom: 55px;
+    color: #000;
+    font-size: 0.5em;
+    position: absolute;
+}
+
+.season {
+    color: #666;
+    font-size: 1em;
+    left: 265px;
+    bottom: 55px;
+    position: absolute;
+}
+
+.temp {
+    left: 425px;
+    bottom: 15px;
+    color: #000;
+    font-size: 0.7em;
+    position: absolute;
+}
+
+.text_temp {
+    font-size: 1em;
+    color: #666;
+    position: absolute;
+    left: 530px;
+    bottom: 10px;
+}
+
+.temp1 {
+    right: 0px;
+    top: 45px;
+    color: #000;
+    position: absolute;
+}
+
+.text_temp1 {
+    font-size: 1em;
+    color: #666;
+    position: absolute;
+}
+
+.bt_temp1 {
+    background-color: #f3f3f3;
+    text-decoration: none;
+    color: #68aba7;
+    font-weight: bold;
+    border: 1px solid #68aba7;
+}
+
+.li_temp1 {
+    margin-left: 10px;
+}
+
+.temp2 {
+    left: 240px;
+    bottom: 25px;
+    color: #000;
+    position: absolute;
+}
+
+.num_copiasM {
+    left: 180px;
+    bottom: 55px;
+    color: #000;
+    font-size: 0.7em;
+    position: absolute;
+}
+
+.text_copiasM {
+    left: 315px;
+    bottom: 20px;
+    position: absolute;
+    width: 70px;
+}
+
+.ubicacionM {
+    left: 400px;
+    bottom: 25px;
+    color: #000;
+    font-size: 0.7em;
+    position: absolute;
+}
+
+.text_ubicacionM {
+    left: 480px;
+    bottom: 20px;
+    position: absolute;
+    width: 70px;
+}

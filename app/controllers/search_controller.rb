@@ -85,7 +85,23 @@ class SearchController < ApplicationController
     
   end
   
-  def configuracion
+  def actualizar
+    
+    @lista_canciones = params[:lista_canciones]
+    @canciones = params[:canciones]
+    
+    if @lista_canciones == "true"
+    
+      resource_url = URI(@canciones)
+      http = Net::HTTP.new(resource_url.host, resource_url.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      request = Net::HTTP::Get.new(resource_url)
+      response = http.request(request)
+      bodyjson = JSON.parse(response.body)
+      @tracklist = bodyjson["tracklist"]
+          
+    end  
     
   end
 end
