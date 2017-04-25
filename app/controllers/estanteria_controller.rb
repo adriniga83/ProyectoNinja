@@ -206,6 +206,7 @@ class EstanteriaController < ApplicationController
       title = "titulo"+params[:lotengo]
       genre = "genero"+params[:lotengo]
       release = "estreno"+params[:lotengo]
+      soporte = "soporte"+params[:lotengo]
       list = @lista_canciones
       id_music = "id_musica"+params[:lotengo]
       image = "poster"+params[:lotengo]
@@ -216,6 +217,7 @@ class EstanteriaController < ApplicationController
       @musica.titulo = params[title] 
       @musica.genero = params[genre]
       @musica.estreno = params[release]
+      @musica.soporte = params[soporte]
       @musica.lista_canciones = @lista_canciones
       @musica.id_musica = params[id_music]
       @musica.imagen_file_name = params[image]
