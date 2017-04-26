@@ -17,7 +17,7 @@
 
 .infoM {
     top: 10px;    
-    left: 335px;
+    left: 180px;
     position: absolute;
     display: inline-block;
 }
@@ -43,8 +43,8 @@
     text-align: left;
     display: block;
     position: absolute;
-    left: 65px;
-    top: 62px;
+    left: 70px;
+    top: 72px;
 }
 
 .argumentoM {
@@ -57,10 +57,11 @@
     text-align: left;
     padding-top: 10px;
     left: 0;
+    top: 54px;
     position: absolute;
 }
 
-.overview {   
+.overviewM {   
     width: auto;
     height: auto;
     text-align: left;
@@ -87,26 +88,6 @@
     left: 245px;
     bottom: 55px;
     position: absolute;
-}
-
-.punt {
-    left: 10px;
-    bottom: 5px;
-    color: #000;
-    font-size: 0.7em;
-    position: absolute;
-}
-
-.vote_average {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
-    left: 140px;
-    bottom: 5px;
-}
-
-.rating {
-    padding-top: 1px;
 }
 
 /* PARA POSTER */
@@ -149,68 +130,11 @@
 
 /* BOTON LO TENGO */
 
-.eliminar {
+.eliminarM {
     position:absolute;
     right:10px;
     top:10px;
     z-index:0;
-}
-
-.lo_tengo {
-    display: block;
-    padding: 0;
-    margin-bottom: 10px;
-    width: 125px;
-    color: #68aba7;
-    text-align: center;
-    border: solid 2px #72c1b9;
-    background-color: #fff;
-    -webkit-transition: background-color .2s ease-in-out;
-    -moz-transition: background-color .2s ease-in-out;
-    -o-transition: background-color .2s ease-in-out;
-    transition: background-color .2s ease-in-out;
-}
-
-.bt {
-    font-family: Arial;
-    font-size: 11px;
-    line-height: 30px;
-    padding: 0 23px;
-    height: 30px;
-    font-weight: bold;
-    color: #555;
-    text-decoration: none;
-    text-transform: uppercase;
-    border: 1px solid #e7e8e8;
-    background-color: #f3f3f3;
-    border-radius: 3px;
-    cursor: pointer;
-    -webkit-appearance: none;
-}
-
-.bt:hover {
-    background-color: #f3f3f3;
-    border-color: #d0d0d0;
-    color: #555;
-    text-decoration: none;
-}
-
-.rem {
-    background-color: #72c1b9;
-    color: #fff;  
-}
-
-.rem:hover {
-    background-color: #fff;
-    color: #72c1b9;
-}
-
-* > .fa.fa-hover-show,
-*:hover > .fa.fa-hover-hidden {
-  display: none;
-}
-*:hover > .fa.fa-hover-show {
-  display: inline-block;
 }
 
 /* PREV y NEXT */
@@ -249,15 +173,7 @@
 
 /* COPIAS Y SOPORTE */
 
-.medio {
-    left: 595px;
-    bottom: 5px;
-    color: #000;
-    font-size: 0.7em;
-    position: absolute;
-}
-
-.num_copy {
+.num_copyM {
     left: 715px;
     bottom: 5px;
     color: #000;
@@ -265,7 +181,7 @@
     position: absolute;
 }
 
-.ubi {
+.ubiM {
     left: 465px;
     bottom: 5px;
     color: #000;
@@ -273,7 +189,7 @@
     position: absolute;
 }
 
-.prestado {
+.prestadoM {
     left: 355px;
     bottom: 5px;
     color: #000;
@@ -281,15 +197,7 @@
     position: absolute;
 }
 
-.sel_medio {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
-    left: 650px;
-    bottom: 5px;
-}
-
-.text_copy {
+.text_copyM {
     font-size: 1em;
     color: #666;
     position: absolute;
@@ -297,7 +205,7 @@
     bottom: 5px;
 }
 
-.text_ubi {
+.text_ubiM {
     font-size: 1em;
     color: #666;
     position: absolute;
@@ -305,7 +213,7 @@
     bottom: 5px;
 }
 
-.text_prestado {
+.text_prestadoM {
     font-size: 1em;
     color: #666;
     position: absolute;
@@ -313,112 +221,10 @@
     bottom: 5px;
 }
 
-.status {
-    left: 10px;
-    bottom: 55px;
-    color: #000;
-    font-size: 0.5em;
-    position: absolute;
-}
-
-.estatus {
-    color: #666;
+.listM {
     font-size: 1em;
-    left: 75px;
-    bottom: 55px;
-    position: absolute;
-}
-
-.temporadas {
-    left: 170px;
-    bottom: 55px;
-    color: #000;
-    font-size: 0.5em;
-    position: absolute;
-}
-
-.season {
-    color: #666;
-    font-size: 1em;
-    left: 265px;
-    bottom: 55px;
-    position: absolute;
-}
-
-.temp {
-    left: 425px;
-    bottom: 15px;
-    color: #000;
-    font-size: 0.7em;
-    position: absolute;
-}
-
-.text_temp {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
-    left: 530px;
-    bottom: 10px;
-}
-
-.temp1 {
-    right: 0px;
-    top: 45px;
     color: #000;
     position: absolute;
-}
-
-.text_temp1 {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
-}
-
-.bt_temp1 {
-    background-color: #f3f3f3;
-    text-decoration: none;
-    color: #68aba7;
-    font-weight: bold;
-    border: 1px solid #68aba7;
-}
-
-.li_temp1 {
-    margin-left: 10px;
-}
-
-.temp2 {
-    left: 240px;
-    bottom: 25px;
-    color: #000;
-    position: absolute;
-}
-
-.num_copiasM {
     left: 180px;
-    bottom: 55px;
-    color: #000;
-    font-size: 0.7em;
-    position: absolute;
-}
-
-.text_copiasM {
-    left: 315px;
-    bottom: 20px;
-    position: absolute;
-    width: 70px;
-}
-
-.ubicacionM {
-    left: 400px;
-    bottom: 25px;
-    color: #000;
-    font-size: 0.7em;
-    position: absolute;
-}
-
-.text_ubicacionM {
-    left: 480px;
-    bottom: 20px;
-    position: absolute;
-    width: 70px;
+    bottom: 35px;
 }

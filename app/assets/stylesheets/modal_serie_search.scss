@@ -98,6 +98,38 @@
     bottom: 20px;
 }
 
+.statusS {
+    left: 10px;
+    bottom: 40px;
+    color: #000;
+    font-size: 0.5em;
+    position: absolute;
+}
+
+.estatusS {
+    color: #666;
+    font-size: 1em;
+    left: 75px;
+    bottom: 40px;
+    position: absolute;
+}
+
+.temporadasS {
+    left: 175px;
+    bottom: 0;
+    color: #000;
+    font-size: 0.5em;
+    position: absolute;
+}
+
+.seasonS {
+    color: #666;
+    font-size: 1em;
+    left: 320px;
+    bottom: 0;
+    position: absolute;
+}
+
 /* PARA POSTER */
 
 .movie_imageS {
@@ -113,6 +145,13 @@
     position: relative;
     float: left;
     border: 3px solid #242121;
+}
+
+/* TAM IMAGEN */
+
+.tam_posterS {
+    width: 310px;
+    height: 425px;
 }
 
 /* X DE CERRAR */
@@ -139,6 +178,67 @@
     top:10px;
     z-index:0;
 }
+
+/*
+
+.lo_tengo {
+    display: block;
+    padding: 0;
+    margin-bottom: 10px;
+    width: 125px;
+    color: #68aba7;
+    text-align: center;
+    border: solid 2px #72c1b9;
+    background-color: #fff;
+    -webkit-transition: background-color .2s ease-in-out;
+    -moz-transition: background-color .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out;
+    transition: background-color .2s ease-in-out;
+}
+
+.bt {
+    font-family: Arial;
+    font-size: 11px;
+    line-height: 30px;
+    padding: 0 23px;
+    height: 30px;
+    font-weight: bold;
+    color: #555;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid #e7e8e8;
+    background-color: #f3f3f3;
+    border-radius: 3px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.bt:hover {
+    background-color: #f3f3f3;
+    border-color: #d0d0d0;
+    color: #555;
+    text-decoration: none;
+}
+
+.rem {
+    background-color: #72c1b9;
+    color: #fff;  
+}
+
+.rem:hover {
+    background-color: #fff;
+    color: #72c1b9;
+}
+
+* > .fa.fa-hover-show,
+*:hover > .fa.fa-hover-hidden {
+  display: none;
+}
+*:hover > .fa.fa-hover-show {
+  display: inline-block;
+}
+
+*/
 
 /* PREV y NEXT */
 
@@ -174,105 +274,71 @@
     color: grey;
 }
 
-/* COPIAS Y SOPORTE */
+/* SOPORTE Y COPIAS */
 
-.medioS {
-    left: 220px;
-    bottom: 0;
+.sel_soporteS {
+    right: 255px;
+    top: 411px;
+    position: absolute;
+    width: 105px;
+}
+
+.text_copiasS {
+    left: 810px;
+    bottom: 50px;
+    position: absolute;
+    width: 70px;
+}
+
+.text_ubicacionS {
+    left: 810px;
+    bottom: 10px;
+    position: absolute;
+    width: 70px;
+}
+
+.soporteS {
+    left: 425px;
+    bottom: 55px;
     color: #000;
     font-size: 0.7em;
     position: absolute;
 }
 
-.num_copyS {
-    left: 715px;
-    bottom: 0;
-    color: #000;
-    font-size: 0.7em;
-    position: absolute;
-}
-
-.ubiS {
-    left: 375px;
-    bottom: 0;
-    color: #000;
-    font-size: 0.7em;
-    position: absolute;
-}
-
-.prestadoS {
-    left: 595px;
-    bottom: 0;
-    color: #000;
-    font-size: 0.7em;
-    position: absolute;
-}
-
-.sel_medioS {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
-    left: 275px;
-    bottom: 0;
-}
-
-.text_copyS {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
-    left: 850px;
-    bottom: 0;
-}
-
-.text_ubiS {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
-    left: 460px;
-    bottom: 0;
-}
-
-.text_prestadoS {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
+.num_copiasS {
     left: 670px;
-    bottom: 0;
-}
-
-.statusS {
-    left: 10px;
-    bottom: 40px;
+    bottom: 55px;
     color: #000;
-    font-size: 0.5em;
+    font-size: 0.7em;
     position: absolute;
 }
 
-.estatusS {
-    color: #666;
-    font-size: 1em;
-    left: 75px;
-    bottom: 40px;
-    position: absolute;
-}
-
-.temporadasS {
-    left: 175px;
-    bottom: 40px;
+.ubicacionS {
+    left: 725px;
+    bottom: 15px;
     color: #000;
-    font-size: 0.5em;
+    font-size: 0.7em;
     position: absolute;
 }
 
-.seasonS {
-    color: #666;
-    font-size: 1em;
-    left: 320px;
-    bottom: 40px;
+.pos_medioS {
+    right: 367px;
+    top: 456px;
+    color: #000;
+    font-size: 0.7em;
     position: absolute;
+    width: 100%;
 }
 
-.tempS {
+.sel_platS {
+    right: 255px;
+    top: 451px;
+    position: absolute;
+    width: 105px;
+}
+
+/*
+.temp {
     left: 425px;
     bottom: 15px;
     color: #000;
@@ -280,17 +346,17 @@
     position: absolute;
 }
 
-.text_tempS {
+.text_temp {
     font-size: 1em;
     color: #666;
     position: absolute;
     left: 530px;
     bottom: 10px;
-}
+}*/
 
 .temp1S {
     right: 550px;
-    top: 444px;
+    top: 434px;
     color: #000;
     position: absolute;
 }
@@ -313,9 +379,10 @@
     margin-left: 10px;
 }
 
-.temp2S {
+/*
+.temp2 {
     left: 240px;
     bottom: 25px;
     color: #000;
     position: absolute;
-}
+}*/

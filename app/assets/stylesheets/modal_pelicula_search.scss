@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.totalJ {
+.totalP {
     display: table;
     width: 900px;
-    height: 460px;
+    height: 480px;
     background-color: #FFF;
     float: none;
     position: relative;
@@ -15,14 +15,14 @@
 
 /* PARA INFORMACION */
 
-.infoJ {
+.infoP {
     top: 10px;    
     left: 335px;
     position: absolute;
     display: inline-block;
 }
 
-.nameJ {
+.nameP {
     font-family: 'Roboto Condensed',sans-serif;
     font-size: 25px;
     font-weight: normal;
@@ -33,7 +33,7 @@
     padding-right: 150px;
 }
 
-.genresJ {
+.genresP {
     width: auto;
     height: auto;
     font-style: italic;
@@ -43,7 +43,7 @@
     display: block;
 }
 
-.argumentoJ {
+.argumentoP {
     font-family: 'Roboto Condensed',sans-serif;
     font-size: 18px;
     line-height: 120%;
@@ -53,7 +53,7 @@
     padding-top: 10px;
 }
 
-.overviewJ {   
+.overviewP {   
     width: auto;
     height: auto;
     text-align: left;
@@ -66,7 +66,7 @@
     text-decoration: none;
 }
 
-.festrenoJ {
+.festrenoP {
     left: 10px;
     bottom: 0px;
     color: #000;
@@ -74,7 +74,7 @@
     position: absolute;
 }
 
-.release_dateJ {
+.release_dateP {
     color: #666;
     font-size: 1em;
     left: 75px;
@@ -82,9 +82,25 @@
     position: absolute;
 }
 
+.puntP {
+    left: 10px;
+    bottom: 20px;
+    color: #000;
+    font-size: 0.7em;
+    position: absolute;
+}
+
+.vote_averageP {
+    font-size: 1em;
+    color: #666;
+    position: absolute;
+    left: 140px;
+    bottom: 20px;
+}
+
 /* PARA POSTER */
 
-.movie_imageJ {
+.movie_imageP {
     display: table-row;
     width: 310px;
     margin-top: 10px;
@@ -117,12 +133,73 @@
 
 /* BOTON LO TENGO */
 
-.eliminarJ {
+.eliminarP {
     position:absolute;
     right:10px;
     top:10px;
     z-index:0;
 }
+
+/*
+
+.lo_tengo {
+    display: block;
+    padding: 0;
+    margin-bottom: 10px;
+    width: 125px;
+    color: #68aba7;
+    text-align: center;
+    border: solid 2px #72c1b9;
+    background-color: #fff;
+    -webkit-transition: background-color .2s ease-in-out;
+    -moz-transition: background-color .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out;
+    transition: background-color .2s ease-in-out;
+}
+
+.bt {
+    font-family: Arial;
+    font-size: 11px;
+    line-height: 30px;
+    padding: 0 23px;
+    height: 30px;
+    font-weight: bold;
+    color: #555;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid #e7e8e8;
+    background-color: #f3f3f3;
+    border-radius: 3px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.bt:hover {
+    background-color: #f3f3f3;
+    border-color: #d0d0d0;
+    color: #555;
+    text-decoration: none;
+}
+
+.rem {
+    background-color: #72c1b9;
+    color: #fff;  
+}
+
+.rem:hover {
+    background-color: #fff;
+    color: #72c1b9;
+}
+
+* > .fa.fa-hover-show,
+*:hover > .fa.fa-hover-hidden {
+  display: none;
+}
+*:hover > .fa.fa-hover-show {
+  display: inline-block;
+}
+
+*/
 
 /* PREV y NEXT */
 
@@ -158,83 +235,80 @@
     color: grey;
 }
 
-/* COPIAS Y SOPORTE */
+/* TAM IMAGEN */
 
-.num_copyJ {
-    left: 715px;
-    bottom: 0;
-    color: #000;
-    font-size: 0.7em;
-    position: absolute;
+.tam_posterP {
+    width: 310px;
+    height: 425px;
 }
 
-.ubiJ {
-    left: 430px;
-    bottom: 0;
-    color: #000;
-    font-size: 0.7em;
-    position: absolute;
+/* Modal confirm */
+
+.pos {
+    float: right;
+    display: inline-block;
+    margin-right: 10px;
 }
 
-.prestadoJ {
-    left: 595px;
-    bottom: 0;
-    color: #000;
-    font-size: 0.7em;
+/* SOPORTE Y COPIAS */
+
+.sel_soporteP {
+    right: 255px;
+    top: 386px;
     position: absolute;
+    width: 105px;
 }
 
-.text_copyJ {
-    font-size: 1em;
-    color: #666;
+.text_copiasP {
+    left: 810px;
+    bottom: 50px;
     position: absolute;
-    left: 850px;
-    bottom: 0;
+    width: 70px;
 }
 
-.text_ubiJ {
-    font-size: 1em;
-    color: #666;
+.text_ubicacionP {
+    left: 810px;
+    bottom: 10px;
     position: absolute;
-    left: 512px;
-    bottom: 0;
+    width: 70px;
 }
 
-.text_prestadoJ {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
-    left: 670px;
-    bottom: 0;
-}
-
-.sel_soporteJ {
-    right: 245px;
-    top: 365px;
-    position: absolute;
-    width: 180px;
-}
-
-.soporteJ {
-    left: 330px;
+.soporteP {
+    left: 425px;
     bottom: 55px;
     color: #000;
     font-size: 0.7em;
     position: absolute;
 }
 
-.text_platJ {
-    left: 165px;
-    bottom: 0;
+.num_copiasP {
+    left: 670px;
+    bottom: 55px;
     color: #000;
     font-size: 0.7em;
     position: absolute;
 }
 
-.sel_platJ {
-    font-size: 1em;
-    color: #666;
+.ubicacionP {
+    left: 725px;
+    bottom: 15px;
+    color: #000;
+    font-size: 0.7em;
     position: absolute;
-    left: 275px;
-    bottom: 0;
+}
+
+.pos_medioP {
+    right: 367px;
+    top: 432px;
+    color: #000;
+    font-size: 0.7em;
+    position: absolute;
+    width: 100%;
+}
+
+.sel_platP {
+    right: 255px;
+    top: 426px;
+    position: absolute;
+    width: 105px;
 }

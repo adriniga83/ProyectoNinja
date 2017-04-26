@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.totalJ {
+.totalM {
     display: table;
     width: 900px;
-    height: 460px;
+    height: 180px;
     background-color: #FFF;
     float: none;
     position: relative;
@@ -15,25 +15,26 @@
 
 /* PARA INFORMACION */
 
-.infoJ {
+.infoM {
     top: 10px;    
-    left: 335px;
+    left: 180px;
     position: absolute;
     display: inline-block;
 }
 
-.nameJ {
-    font-family: 'Roboto Condensed',sans-serif;
-    font-size: 25px;
+.nameM {
+        font-family: 'Roboto Condensed',sans-serif;
+    font-size: 22px;
     font-weight: normal;
     line-height: 100%;
     margin-bottom: 10px;
     display: block;
     text-align: left;
     padding-right: 150px;
+    width: 700px;
 }
 
-.genresJ {
+.genresM {
     width: auto;
     height: auto;
     font-style: italic;
@@ -41,19 +42,26 @@
     font-size: 1em;
     text-align: left;
     display: block;
+    position: absolute;
+    left: 70px;
+    top: 62px;
 }
 
-.argumentoJ {
+.argumentoM {
     font-family: 'Roboto Condensed',sans-serif;
-    font-size: 18px;
+    font-size: 14px;
+    font-weight: bold;
     line-height: 120%;
     margin-bottom: 5px;
     color: #000;
     text-align: left;
     padding-top: 10px;
+    left: 0;
+    top: 54px;
+    position: absolute;
 }
 
-.overviewJ {   
+.overview {   
     width: auto;
     height: auto;
     text-align: left;
@@ -66,37 +74,42 @@
     text-decoration: none;
 }
 
-.festrenoJ {
-    left: 10px;
-    bottom: 0px;
+.festrenoM {
+    left: 180px;
+    bottom: 55px;
     color: #000;
     font-size: 0.5em;
     position: absolute;
 }
 
-.release_dateJ {
+.release_dateM {
     color: #666;
     font-size: 1em;
-    left: 75px;
-    bottom: 0px;
+    left: 245px;
+    bottom: 55px;
     position: absolute;
 }
 
 /* PARA POSTER */
 
-.movie_imageJ {
+.movie_imageM {
     display: table-row;
-    width: 310px;
+    width: 155px;
     margin-top: 10px;
     margin-left: 10px;
     display: inline-block;
-    height: 425px;
+    height: 155px;
     overflow: hidden;
     box-sizing: border-box;
     box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.55);
     position: relative;
     float: left;
     border: 3px solid #242121;
+}
+
+.tam_posterM {
+    width: 155px;
+    height: 155px;
 }
 
 /* X DE CERRAR */
@@ -117,7 +130,7 @@
 
 /* BOTON LO TENGO */
 
-.eliminarJ {
+.eliminarM {
     position:absolute;
     right:10px;
     top:10px;
@@ -158,83 +171,42 @@
     color: grey;
 }
 
-/* COPIAS Y SOPORTE */
-
-.num_copyJ {
-    left: 715px;
-    bottom: 0;
+.num_copiasM {
+    left: 180px;
+    bottom: 25px;
     color: #000;
     font-size: 0.7em;
     position: absolute;
 }
 
-.ubiJ {
-    left: 430px;
-    bottom: 0;
+.text_copiasM {
+    left: 315px;
+    bottom: 20px;
+    position: absolute;
+    width: 70px;
+}
+
+.ubicacionM {
+    left: 400px;
+    bottom: 25px;
     color: #000;
     font-size: 0.7em;
     position: absolute;
 }
 
-.prestadoJ {
-    left: 595px;
-    bottom: 0;
+.text_ubicacionM {
+    left: 480px;
+    bottom: 20px;
+    position: absolute;
+    width: 70px;
+}
+
+.pos_medioM {
+    font-size: 1em; 
+    font-weight: bold;
     color: #000;
-    font-size: 0.7em;
+    right: 200px;
+    top: 122px;
     position: absolute;
-}
-
-.text_copyJ {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
-    left: 850px;
-    bottom: 0;
-}
-
-.text_ubiJ {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
-    left: 512px;
-    bottom: 0;
-}
-
-.text_prestadoJ {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
-    left: 670px;
-    bottom: 0;
-}
-
-.sel_soporteJ {
-    right: 245px;
-    top: 365px;
-    position: absolute;
-    width: 180px;
-}
-
-.soporteJ {
-    left: 330px;
-    bottom: 55px;
-    color: #000;
-    font-size: 0.7em;
-    position: absolute;
-}
-
-.text_platJ {
-    left: 165px;
-    bottom: 0;
-    color: #000;
-    font-size: 0.7em;
-    position: absolute;
-}
-
-.sel_platJ {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
-    left: 275px;
-    bottom: 0;
+    width: 100%;
 }

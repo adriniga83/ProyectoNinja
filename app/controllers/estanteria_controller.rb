@@ -200,7 +200,8 @@ class EstanteriaController < ApplicationController
       @lista_canciones = Array.new
       
       @tracklist.each do |list|
-        @lista_canciones << list['duration']+" "+list["position"]+" "+list["title"]
+        @hash = {"Duracion" => list['duration'], "Posicion" => list["position"], "Titulo" => list["title"]}
+        @lista_canciones.push(@hash)
       end
       
       title = "titulo"+params[:lotengo]

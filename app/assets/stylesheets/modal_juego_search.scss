@@ -99,6 +99,13 @@
     border: 3px solid #242121;
 }
 
+/* TAM IMAGEN */
+
+.tam_posterJ {
+    width: 310px;
+    height: 425px;
+}
+
 /* X DE CERRAR */
 
 .close-dialog {
@@ -158,54 +165,34 @@
     color: grey;
 }
 
-/* COPIAS Y SOPORTE */
-
-.num_copyJ {
-    left: 715px;
-    bottom: 0;
-    color: #000;
-    font-size: 0.7em;
+.text_copiasJ {
+    left: 810px;
+    bottom: 50px;
     position: absolute;
+    width: 70px;
 }
 
-.ubiJ {
-    left: 430px;
-    bottom: 0;
-    color: #000;
-    font-size: 0.7em;
+.text_ubicacionJ {
+    left: 810px;
+    bottom: 10px;
     position: absolute;
+    width: 70px;
 }
 
-.prestadoJ {
-    left: 595px;
-    bottom: 0;
-    color: #000;
-    font-size: 0.7em;
-    position: absolute;
-}
-
-.text_copyJ {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
-    left: 850px;
-    bottom: 0;
-}
-
-.text_ubiJ {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
-    left: 512px;
-    bottom: 0;
-}
-
-.text_prestadoJ {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
+.num_copiasJ {
     left: 670px;
-    bottom: 0;
+    bottom: 55px;
+    color: #000;
+    font-size: 0.7em;
+    position: absolute;
+}
+
+.ubicacionJ {
+    left: 725px;
+    bottom: 15px;
+    color: #000;
+    font-size: 0.7em;
+    position: absolute;
 }
 
 .sel_soporteJ {
@@ -223,18 +210,26 @@
     position: absolute;
 }
 
+.pos_medioJ {
+    right: 429px;
+    top: 412px;
+    color: #000;
+    font-size: 0.7em;
+    position: absolute;
+    width: 110px;
+}
+
+.sel_platJ {
+    right: 245px;
+    top: 406px;
+    position: absolute;
+    width: 180px; 
+}
+
 .text_platJ {
     left: 165px;
     bottom: 0;
     color: #000;
     font-size: 0.7em;
     position: absolute;
-}
-
-.sel_platJ {
-    font-size: 1em;
-    color: #666;
-    position: absolute;
-    left: 275px;
-    bottom: 0;
 }

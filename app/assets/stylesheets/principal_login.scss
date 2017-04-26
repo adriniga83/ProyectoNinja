@@ -113,6 +113,65 @@ width: 100%;
     }
 }
 
+/* BOTON LO TENGO */
+
+.lo_tengo {
+    display: block;
+    padding: 0;
+    margin-bottom: 10px;
+    width: 125px;
+    color: #68aba7;
+    text-align: center;
+    border: solid 2px #72c1b9;
+    background-color: #fff;
+    -webkit-transition: background-color .2s ease-in-out;
+    -moz-transition: background-color .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out;
+    transition: background-color .2s ease-in-out;
+}
+
+.bt {
+    font-family: Arial;
+    font-size: 11px;
+    line-height: 30px;
+    padding: 0 23px;
+    height: 30px;
+    font-weight: bold;
+    color: #555;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid #e7e8e8;
+    background-color: #f3f3f3;
+    border-radius: 3px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.bt:hover {
+    background-color: #f3f3f3;
+    border-color: #d0d0d0;
+    color: #555;
+    text-decoration: none;
+}
+
+.rem {
+    background-color: #72c1b9;
+    color: #fff;  
+}
+
+.rem:hover {
+    background-color: #fff;
+    color: #72c1b9;
+}
+
+* > .fa.fa-hover-show,
+*:hover > .fa.fa-hover-hidden {
+  display: none;
+}
+*:hover > .fa.fa-hover-show {
+  display: inline-block;
+}
+
 /* Esto va al final de la CSS */
 
 @font-face {
