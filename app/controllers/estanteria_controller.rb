@@ -402,6 +402,7 @@ class EstanteriaController < ApplicationController
       
       @edit = params[:edit]
       @prestar = params[:prestar]
+      @mod_temp = params[:mod_temp]
       
       arrayTemp = Array.new
       
@@ -411,13 +412,6 @@ class EstanteriaController < ApplicationController
           if serie.id_user == current_user.id && serie.id_serie.to_s == params[:id] && serie.soporte == params[:soporte]
             serie.num_copias = params[:num_copias]
             serie.ubicacion = params[:ubicacion]
-            (1..params[:num_seasons].to_i).each do |i|
-              temps = "checkbox"+i.to_s
-              if params[temps] != nil
-                arrayTemp << i
-              end
-            end
-            serie.temporadas = arrayTemp
             serie.save
           end
         end
@@ -438,6 +432,22 @@ class EstanteriaController < ApplicationController
               serie.pres_prestamo = nil
               serie.save
             end
+          end
+        end
+      end
+      
+      if @mod_temp == "true"
+        @serie = Serie.where(params[:id])
+        @serie.each do |serie|
+          if serie.id_user == current_user.id && serie.id_serie.to_s == params[:id] && serie.soporte == params[:soporte]
+            (1..params[:num_seasons].to_i).each do |i|
+              temps = "checkbox"+i.to_s
+              if params[temps] != nil
+                arrayTemp << i
+              end
+            end
+            serie.temporadas = arrayTemp
+            serie.save
           end
         end
       end
