@@ -269,26 +269,32 @@ class EstanteriaController < ApplicationController
     @flag_serie = params[:flag_serie]
     @flag_musica = params[:flag_musica]
     @flag_juego = params[:flag_juego]
+    @prin = params[:prin]
+    @est = params[:est]
     
     if @flag_pelicula == "true"
     
-    id_movie = "id_pelicula"+params[:lotengo]
-    soporte = "soporte"+params[:lotengo]
-    
-    @delete = Pelicula.where(["soporte = :soporte and id_pelicula = :id", { id: params[id_movie], soporte: params[soporte] }])
-    @eliminate = Estanterium.where(["medio = :medio and id_pelicula = :id", { id: params[id_movie], medio: params[soporte] }])
-    @delete.each do |borrar|
-      if borrar.id_user == current_user.id && borrar.id_pelicula.to_s == params[id_movie]
-        borrar.destroy
+      id_movie = "id_pelicula"+params[:lotengo]
+      soporte = "soporte"+params[:lotengo]
+
+      @delete = Pelicula.where(["soporte = :soporte and id_pelicula = :id", { id: params[id_movie], soporte: params[soporte] }])
+      @eliminate = Estanterium.where(["medio = :medio and id_pelicula = :id", { id: params[id_movie], medio: params[soporte] }])
+      @delete.each do |borrar|
+        if borrar.id_user == current_user.id && borrar.id_pelicula.to_s == params[id_movie]
+          borrar.destroy
+        end
       end
-    end
-    @eliminate.each do |borrar1|
-      if borrar1.user_id == current_user.id && borrar1.id_pelicula == params[id_movie]
-        borrar1.destroy
+      @eliminate.each do |borrar1|
+        if borrar1.user_id == current_user.id && borrar1.id_pelicula == params[id_movie]
+          borrar1.destroy
+        end
       end
-    end
-    redirect_to estanteria_path
-    
+      if @prin == "true"
+        redirect_to user_root_path
+      end
+      if @est == "true"
+        redirect_to controller: 'estanteria', multimedia: 'peliculas', select_filtrar: 'Todo'
+      end
     end
     
     if @flag_serie == "true"
@@ -308,49 +314,61 @@ class EstanteriaController < ApplicationController
           borrar1.destroy
         end
       end
-      redirect_to estanteria_path
-      
+      if @prin == "true"
+        redirect_to user_root_path
+      end
+      if @est == "true"
+        redirect_to controller: 'estanteria', multimedia: 'series'
+      end
     end
     
     if @flag_juego == "true"
     
-    id_game = "id_juego"+params[:lotengo]
-    soporte = "soporte"+params[:lotengo]
-    
-    @delete = Juego.where(["soporte = :soporte and id_juego = :id", { id: params[id_game], soporte: params[soporte] }])
-    @eliminate = Estanterium.where(["medio = :medio and id_videojuego = :id", { id: params[id_game], medio: params[soporte] }])
-    @delete.each do |borrar|
-      if borrar.id_user == current_user.id && borrar.id_juego.to_s == params[id_game]
-        borrar.destroy
+      id_game = "id_juego"+params[:lotengo]
+      soporte = "soporte"+params[:lotengo]
+
+      @delete = Juego.where(["soporte = :soporte and id_juego = :id", { id: params[id_game], soporte: params[soporte] }])
+      @eliminate = Estanterium.where(["medio = :medio and id_videojuego = :id", { id: params[id_game], medio: params[soporte] }])
+      @delete.each do |borrar|
+        if borrar.id_user == current_user.id && borrar.id_juego.to_s == params[id_game]
+          borrar.destroy
+        end
       end
-    end
-    @eliminate.each do |borrar1|
-      if borrar1.user_id == current_user.id && borrar1.id_videojuego == params[id_game]
-        borrar1.destroy
+      @eliminate.each do |borrar1|
+        if borrar1.user_id == current_user.id && borrar1.id_videojuego == params[id_game]
+          borrar1.destroy
+        end
       end
-    end
-    redirect_to estanteria_path
-    
+      if @prin == "true"
+        redirect_to user_root_path
+      end
+      if @est == "true"
+        redirect_to controller: 'estanteria', multimedia: 'juegos'
+      end
     end   
     
     if @flag_musica == "true"
     
-    id_musica = "id_musica"+params[:lotengo]
+      id_musica = "id_musica"+params[:lotengo]
 
-    @delete = Musica.where(["id_musica = :id", { id: params[id_musica] }])
-    @eliminate = Estanterium.where(["id_musica = :id", { id: params[id_musica] }])
-    @delete.each do |borrar|
-      if borrar.id_user == current_user.id && borrar.id_musica.to_s == params[id_musica]
-        borrar.destroy
+      @delete = Musica.where(["id_musica = :id", { id: params[id_musica] }])
+      @eliminate = Estanterium.where(["id_musica = :id", { id: params[id_musica] }])
+      @delete.each do |borrar|
+        if borrar.id_user == current_user.id && borrar.id_musica.to_s == params[id_musica]
+          borrar.destroy
+        end
       end
-    end
-    @eliminate.each do |borrar1|
-      if borrar1.user_id == current_user.id && borrar1.id_musica == params[id_musica]
-        borrar1.destroy
+      @eliminate.each do |borrar1|
+        if borrar1.user_id == current_user.id && borrar1.id_musica == params[id_musica]
+          borrar1.destroy
+        end
       end
-    end
-    redirect_to estanteria_path
-    
+      if @prin == "true"
+        redirect_to user_root_path
+      end
+      if @est == "true"
+        redirect_to controller: 'estanteria', multimedia: 'musica'
+      end    
     end   
   end
   
@@ -360,6 +378,8 @@ class EstanteriaController < ApplicationController
     @flag_serie = params[:flag_serie]
     @flag_musica = params[:flag_musica]
     @flag_juego = params[:flag_juego]
+    @prin = params[:prin]
+    @est = params[:est]
     
     if @flag_pelicula == "true"
     
@@ -374,6 +394,12 @@ class EstanteriaController < ApplicationController
            pelicula.ubicacion = params[:ubicacion]
            pelicula.save
           end
+        end
+        if @prin == "true"
+          redirect_to user_root_path
+        end
+        if @est == "true"
+          redirect_to controller: 'estanteria', multimedia: 'peliculas', select_filtrar: 'Todo'
         end
       end
 
@@ -393,6 +419,12 @@ class EstanteriaController < ApplicationController
               pelicula.save
             end
           end
+        end
+        if @prin == "true"
+          redirect_to user_root_path
+        end
+        if @est == "true"
+          redirect_to controller: 'estanteria', multimedia: 'peliculas', select_filtrar: 'Todo'
         end
       end
       
@@ -415,6 +447,12 @@ class EstanteriaController < ApplicationController
             serie.save
           end
         end
+        if @prin == "true"
+          redirect_to user_root_path
+        end
+        if @est == "true"
+          redirect_to controller: 'estanteria', multimedia: 'series'
+        end
       end
 
       if @prestar == "true"
@@ -434,6 +472,12 @@ class EstanteriaController < ApplicationController
             end
           end
         end
+        if @prin == "true"
+          redirect_to user_root_path
+        end
+        if @est == "true"
+          redirect_to controller: 'estanteria', multimedia: 'series'
+        end
       end
       
       if @mod_temp == "true"
@@ -449,6 +493,12 @@ class EstanteriaController < ApplicationController
             serie.temporadas = arrayTemp
             serie.save
           end
+        end
+        if @prin == "true"
+          redirect_to user_root_path
+        end
+        if @est == "true"
+          redirect_to controller: 'estanteria', multimedia: 'series'
         end
       end
       
@@ -467,6 +517,12 @@ class EstanteriaController < ApplicationController
            juego.ubicacion = params[:ubicacion]
            juego.save
           end
+        end
+        if @prin == "true"
+          redirect_to user_root_path
+        end
+        if @est == "true"
+          redirect_to controller: 'estanteria', multimedia: 'juegos'
         end
       end
 
@@ -487,6 +543,12 @@ class EstanteriaController < ApplicationController
             end
           end
         end
+        if @prin == "true"
+          redirect_to user_root_path
+        end
+        if @est == "true"
+          redirect_to controller: 'estanteria', multimedia: 'juegos'
+        end
       end
       
     end
@@ -504,6 +566,12 @@ class EstanteriaController < ApplicationController
            musica.ubicacion = params[:ubicacion]
            musica.save
           end
+        end
+        if @prin == "true"
+          redirect_to user_root_path
+        end
+        if @est == "true"
+          redirect_to controller: 'estanteria', multimedia: 'musica'
         end
       end
 
@@ -523,6 +591,12 @@ class EstanteriaController < ApplicationController
               musica.save
             end
           end
+        end
+        if @prin == "true"
+          redirect_to user_root_path
+        end
+        if @est == "true"
+          redirect_to controller: 'estanteria', multimedia: 'musica'
         end
       end
       
