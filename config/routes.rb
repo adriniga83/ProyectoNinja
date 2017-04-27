@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   
   get 'peliculas' => 'peliculas#index'
   get 'listas' => 'listas#index'
+  get 'novedades' => 'novedades#index'
   #put 'estanteria' => "estanteria#actualizar"
   
   #match '/estanteria', to: 'estanteria#actualizar', via: 'put'
